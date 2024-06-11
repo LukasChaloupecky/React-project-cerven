@@ -44,9 +44,9 @@ export enum ActionEnum {
 export type Action = 
 | {type : ActionEnum.CHANGE_WEAPON, WEAPON_INDEX: number}  // ? WEAPON_ID is in weapon inventory and id is for the item
 | {type : ActionEnum.CHANGE_ARMOR , ARMOR_INDEX: number} // ? ARMOR_ID is in armor inventory and id is for the item
-| {type : ActionEnum.CHANGE_SCORE , SCORE: number} // ? SCORE is the new score
-| {type : ActionEnum.CHANGE_SPOT  , SPOT: number} // ? SPOT is the new spot
-| {type : ActionEnum.CHANGE_LEVEL , LEVEL: number} // ? LEVEL is the new level
+| {type : ActionEnum.CHANGE_SCORE , SCORE_DIFFERENCE: number} // ? SCORE difference can be both positive and negative
+| {type : ActionEnum.CHANGE_SPOT  , SPOT_DIFFERENCE: number} // ? SPOT is the new spot
+| {type : ActionEnum.CHANGE_LEVEL , LEVEL_DIFFERENCE: number} // ? LEVEL is the new level
 
 
 
@@ -63,11 +63,11 @@ export const GameState = (state : GameStateType, action: Action) => {
                 boots:       armor.type === ArmorType.BOOTS       ? armor : state.selectedArmor.boots
             }}; 
         case ActionEnum.CHANGE_SCORE:
-            return {...state, score: action.SCORE};
+            return {...state, score: action.SCORE_DIFFERENCE + state.score};
         case ActionEnum.CHANGE_SPOT:
-            return {...state, currentSpot: action.SPOT};
+            return {...state, currentSpot: action.SPOT_DIFFERENCE + state.currentSpot};
         case ActionEnum.CHANGE_LEVEL:
-            return {...state, currentLevel: action.LEVEL}; 
+            return {...state, currentLevel: action.LEVEL_DIFFERENCE + state.currentLevel}; 
         default:
             return state
     }
