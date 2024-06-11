@@ -1,0 +1,30 @@
+const WeaponsData: Weapon[] = [
+    {
+        id: WeaponEnum.SWORD,
+        name: "Sword",
+        damage: 10,
+        cost: 10,
+        element: ElementEnum.NONE
+    },
+    {
+        id: WeaponEnum.AXE,
+        name: "Axe",
+        damage: 15,
+        cost: 15,
+        element: ElementEnum.NONE
+    },
+    {
+        id: WeaponEnum.BOW,
+        name: "Bow",
+        damage: 20,
+        cost: 20,
+        element: ElementEnum.NONE
+    },
+    {
+        id: WeaponEnum.STAFF,
+        name: "Staff",
+        damage: 25,
+        cost: 25,
+        element: ElementEnum.NONE
+    }
+]
