@@ -5,7 +5,8 @@ type Enemy = {
     score : number,
     damage : number,
     element : ElementEnum,
-    level : number
+    level : number,
+    // TODO : image : string
 }
 
 enum EnemyEnum {

@@ -4,7 +4,7 @@ type Armor = {
     defense: number,
     cost: number // ? For how much score can the item be sold
     type: ArmorType,
-    element: ElementEnum
+    element: ElementEnum,
 }
 enum ArmorEnum {
     MetalHelmet,
