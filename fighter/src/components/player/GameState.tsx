@@ -5,7 +5,6 @@ import { Armor, ArmorType } from "./Armor"
 import { Weapon } from "./Weapon"
 import { Enemy } from "../enemy/Enemy"
 import { HandleBoardGeneration } from "../methods/BoardGeneration"
-import { FightChoice, FightHandler } from "../methods/Fighting"
 
 export const Rules = {
     boardSize: 8,
