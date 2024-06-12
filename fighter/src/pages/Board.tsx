@@ -17,9 +17,10 @@ const Board = () => {
     const [PlayerHP, setPlayerHP] = useState(Rules.maxHP); // TODO : Change this to the player's HP
     const [PlayerTurn, setPlayerTurn] = useState(true);
 
-    const useEffect = () => {
+    useEffect(() => {
         // TODO : useEffect so that the other data is updated and doesn't dispay invalid values
-    };
+        if (Enemy.hp <= 0) HandeWin();
+    }, [Enemy.hp]);
 
 
     const HandleAttack = (choice : FightChoice) => {
@@ -29,8 +30,10 @@ const Board = () => {
         console.log("Enemy HP: " + Enemy.hp);
         console.log("Enemy HP: " + Enemy.hp);
 
+        /*
         if (Enemy.hp <= 0) HandeWin();
-        else setPlayerTurn(false);
+        */
+        setPlayerTurn(false);
     }
     const HandeWin = () => {
         console.log("Win");
@@ -100,6 +103,7 @@ const Board = () => {
             <div>
                 <h1>Player : {PlayerHP}</h1>
                 <h1>Enemy : {Enemy.hp}</h1>
+                <h1>Level : {Reducer.state.score}</h1>
             </div>
         </>
     );
