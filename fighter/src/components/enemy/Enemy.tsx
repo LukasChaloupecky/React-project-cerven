@@ -8,6 +8,7 @@ export type Enemy = {
     damage : number,
     element : ElementEnum,
     level : number,
+    imgUrl : string
     // TODO : image : string
 }
 

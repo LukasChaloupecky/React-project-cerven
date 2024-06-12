@@ -8,6 +8,7 @@ export type Armor = {
     type: ArmorType,
     element: ElementEnum,
     level: number
+    ImgUrl : string
 }
 export enum ArmorEnum {
     MetalHelmet,

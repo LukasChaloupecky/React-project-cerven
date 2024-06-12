@@ -11,7 +11,8 @@ export const EnemyData = [
         score : 10,
         damage : 10,
         element : ElementEnum.NONE,
-        level : 1
+        level : 1,
+        imgUrl : "./images/enemy/goblin.png"
     },
     {
         id : EnemyEnum.Goblin,
@@ -20,6 +21,7 @@ export const EnemyData = [
         score : 10,
         damage : 10,
         element : ElementEnum.NONE,
-        level : 2
+        level : 2,
+        imgUrl : "./images/enemy/goblin.png"
     }
 ]

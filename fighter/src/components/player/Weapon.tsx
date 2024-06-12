@@ -6,7 +6,8 @@ export type Weapon = {
     damage: number,
     cost: number // ? For how much score can the item be sold
     element: ElementEnum ,
-    level: number
+    level: number,
+    ImgUrl : string
 }
 
 export enum WeaponEnum {

@@ -11,7 +11,8 @@ export const ArmorData: Armor[] = [
         cost: 10,
         type: ArmorType.HELMET,
         element: ElementEnum.NONE,
-        level: 1
+        level: 1,
+        ImgUrl: "/armor/metal_helmet.png"
     },
     {
         id: ArmorEnum.LeatherHelmet,
@@ -20,7 +21,8 @@ export const ArmorData: Armor[] = [
         cost: 5,
         type: ArmorType.HELMET,
         element: ElementEnum.NONE,
-        level: 1
+        level: 1,
+        ImgUrl: "images/armor/leather_helmet.png"
     },
     {
         id: ArmorEnum.MetalBreastplate,
@@ -29,7 +31,8 @@ export const ArmorData: Armor[] = [
         cost: 20,
         type: ArmorType.BREASTPLATE,
         element: ElementEnum.NONE,
-        level: 2
+        level: 2,
+        ImgUrl: "images/armor/metal_breastplate.png"
     },
     {
         id: ArmorEnum.MetalBreastplate,
@@ -38,7 +41,8 @@ export const ArmorData: Armor[] = [
         cost: 20,
         type: ArmorType.BREASTPLATE,
         element: ElementEnum.NONE,
-        level: 1
+        level: 1,
+        ImgUrl: "images/armor/metal_breastplate.png"
     }
     
 ]

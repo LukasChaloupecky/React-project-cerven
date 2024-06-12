@@ -5,6 +5,7 @@ import { ArmorData } from "../data/ArmorData";
 import { Armor } from "../components/player/Armor";
 import { Weapon } from "../components/player/Weapon";
 import { WeaponData } from "../data/WeaponData";
+import SelectedItems from "./PageComponents/SelectedItems";
 
 
 
@@ -97,6 +98,7 @@ const Board = () => {
                     :
                     <button onClick={() => HandleDefense()}>Defense</button>
                 }
+                
                 </>
                 
             :
@@ -111,6 +113,7 @@ const Board = () => {
                 <h1>Level : {state.currentLevel}</h1>
                 <h1>Score : {state.score}</h1>
                 <h1>Spot : {state.currentSpot}</h1>
+                <SelectedItems state={state}/>
                 {
                  // TODO : for whatever reason its called twice   (THE MAP)
                     state.armorInventory.map((armor, index) => {console.log(armor + " " + index); return (<h1 key={index}>{armor.name}</h1>);})

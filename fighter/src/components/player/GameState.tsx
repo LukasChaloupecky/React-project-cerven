@@ -34,6 +34,7 @@ export type GameStateType = {
 export const InitialGameState: GameStateType = {
     selectedWeapon: WeaponData[0],
     selectedArmor: {
+        // TODO : get the armor by id
         helmet: ArmorData[0],
         breastplate: ArmorData[1],
         pants: ArmorData[2],
