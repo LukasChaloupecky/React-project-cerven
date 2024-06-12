@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { ActionEnum, GameContext, Rules } from "../components/player/GameState";
 import { FightChoice, FightHandler } from "../components/methods/Fighting";
+import { ArmorData } from "../data/ArmorData";
+import { Armor } from "../components/player/Armor";
 
 const Board = () => { 
     const Reducer = useContext(GameContext);
@@ -22,10 +24,11 @@ const Board = () => {
         Reducer?.dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: false});
 
         if (Math.floor(Math.random() * 1) === 1) {
-            
+            let armors : Armor[] = ArmorData.filter((armor) => armor.level == Reducer?.state.currentLevel)
+            // TODO : select armor from armors on random by the level
         }
         else {
-
+            // TODO : select one weapon based on the level that the user currently has
         }
     }
 
