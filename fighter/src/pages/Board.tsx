@@ -6,7 +6,14 @@ const Board = () => {
     
     return (
         <>
-           <h1>Board</h1> 
+
+            {
+            Reducer?.state.isFight 
+            ?
+                <h1>fight</h1>
+            :
+                <h1>move</h1>
+            }
         </>
     );
 }
