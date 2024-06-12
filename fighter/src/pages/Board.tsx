@@ -21,6 +21,9 @@ const Board = () => {
         // TODO : useEffect so that the other data is updated and doesn't dispay invalid values
         if (Enemy.hp <= 0) HandeWin();
     }, [Enemy.hp]);
+    useEffect(() => { 
+
+    }, [PlayerHP]);
 
 
     const HandleAttack = (choice : FightChoice) => {
@@ -74,6 +77,12 @@ const Board = () => {
 
     return (
         <>
+            {
+            (PlayerHP <= 0) 
+            ? 
+            <h1>Game Over</h1> 
+            : 
+            <>
             { // TODO : HERE WILL BE the SPOTS etc.
             }
             {
@@ -105,6 +114,8 @@ const Board = () => {
                 <h1>Enemy : {Enemy.hp}</h1>
                 <h1>Level : {Reducer.state.score}</h1>
             </div>
+            </>
+            }
         </>
     );
 }
