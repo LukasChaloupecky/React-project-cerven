@@ -34,6 +34,6 @@ export const WeaponData: Weapon[] = [
         damage: 25,
         cost: 25,
         element: ElementEnum.NONE,
-        level: 1
+        level: 2
     }
 ]

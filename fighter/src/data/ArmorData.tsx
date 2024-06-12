@@ -29,7 +29,7 @@ export const ArmorData: Armor[] = [
         cost: 20,
         type: ArmorType.BREASTPLATE,
         element: ElementEnum.NONE,
-        level: 1
+        level: 2
     },
     {
         id: ArmorEnum.MetalBreastplate,

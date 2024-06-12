@@ -8,7 +8,7 @@ function App() {
   const [state, dispatch] = useReducer(GameState, InitialGameState)
   return (
     <>
-      <GameContext.Provider value={{state : state, dispatch : dispatch}}> 
+      <GameContext.Provider value={{state, dispatch}}> 
         <Board />
       </GameContext.Provider> 
     </>

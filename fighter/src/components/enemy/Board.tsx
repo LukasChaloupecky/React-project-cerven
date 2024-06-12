@@ -12,8 +12,9 @@ import { WeaponData } from "../data/WeaponData";
 const Board = () => { 
     const state = useContext(GameContext).state;
     const dispatch = useContext(GameContext).dispatch;
+    if (Reducer === undefined) throw new Error("useContext must be inside a Provider with a value");
 
-    const [Enemy, setEnemy] = useState(state.Board[state.currentSpot]);
+    const [Enemy, setEnemy] = useState(Reducer?.state.Board[Reducer?.state.currentSpot]);
     const [PlayerHP, setPlayerHP] = useState(Rules.maxHP); // TODO : Change this to the player's HP
     const [PlayerTurn, setPlayerTurn] = useState(true);
 
@@ -27,7 +28,7 @@ const Board = () => {
 
 
     const HandleAttack = (choice : FightChoice) => {
-        const damage = FightHandler({gamestate: state, choice: choice, enemy : Enemy});
+        const damage = FightHandler({gamestate: Reducer?.state, choice: choice, enemy : Enemy});
         setEnemy({...Enemy, hp: Enemy.hp - damage});
         /*
         if (Enemy.hp <= 0) HandeWin();
@@ -37,38 +38,38 @@ const Board = () => {
     const HandeWin = () => {
         
         console.log("Win");
-        dispatch({type: ActionEnum.CHANGE_SCORE, SCORE_DIFFERENCE: Enemy.score});
-        dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: false});
+        Reducer?.dispatch({type: ActionEnum.CHANGE_SCORE, SCORE_DIFFERENCE: Enemy.score});
+        Reducer?.dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: false});
         
         if (Math.floor(Math.random() * 2) === 1) {
-            let armors : Armor[] = ArmorData.filter((armor) => armor.level <= state.currentLevel);
+            let armors : Armor[] = ArmorData.filter((armor) => armor.level <= Reducer?.state.currentLevel);
             let index : number = Math.floor(Math.random() * armors.length-1);
 
             // TODO : select armor from armors on random by the level
-            dispatch({type: ActionEnum.ADD_ARMOR, ARMOR: armors[index]});
+            Reducer.dispatch({type: ActionEnum.ADD_ARMOR, ARMOR: armors[index]});
         }
         else {
-            let weapons : Weapon[] = WeaponData.filter((weapon) => weapon.level <= state.currentLevel); 
+            let weapons : Weapon[] = WeaponData.filter((weapon) => weapon.level <= Reducer?.state.currentLevel); 
             let index : number = Math.floor(Math.random() * weapons.length-1);
             // TODO : select one weapon based on the level that the user currently has
 
-             dispatch({type: ActionEnum.ADD_WEAPON, WEAPON: weapons[index]});
+             Reducer.dispatch({type: ActionEnum.ADD_WEAPON, WEAPON: weapons[index]});
         }
-         dispatch({type : ActionEnum.IS_FIGHT, IS_FIGHT: false})
+         Reducer.dispatch({type : ActionEnum.IS_FIGHT, IS_FIGHT: false})
          setPlayerHP(Rules.maxHP);
     }
 
     const HandleDefense = () => {
-         setPlayerHP(PlayerHP - DefenseHandler({enemy: Enemy, gamestate: state}));
+         setPlayerHP(PlayerHP - DefenseHandler({enemy: Enemy, gamestate: Reducer?.state}));
          setPlayerTurn(true);
     }
     const HandleMove = () => {
         const move = Math.floor(Math.random() * Rules.maxMove);
-         dispatch({type: ActionEnum.CHANGE_SPOT, SPOT_DIFFERENCE: move});
+         Reducer?.dispatch({type: ActionEnum.CHANGE_SPOT, SPOT_DIFFERENCE: move});
 
-         setEnemy(state.Board[state.currentSpot]);
+         setEnemy(Reducer?.state.Board[Reducer?.state.currentSpot]);
 
-         dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: true});
+         Reducer?.dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: true});
          setPlayerTurn(true);
     }
 
@@ -80,7 +81,7 @@ const Board = () => {
             { // TODO : HERE WILL BE the SPOTS etc.
             }
             {
-            state.isFight 
+            Reducer?.state.isFight 
             ?
                 <>
                 <h1>fight</h1>
@@ -106,15 +107,15 @@ const Board = () => {
             <div>
                 <h1>Player : {PlayerHP}</h1>
                 <h1>Enemy : {Enemy.hp}</h1>
-                <h1>Level : {state.currentLevel}</h1>
-                <h1>Score : {state.score}</h1>
-                <h1>Spot : {state.currentSpot}</h1>
+                <h1>Level : {Reducer.state.currentLevel}</h1>
+                <h1>Score : {Reducer.state.score}</h1>
+                <h1>Spot : {Reducer.state.currentSpot}</h1>
                 {
                  // TODO : for whatever reason its called twice   (THE MAP)
-                    state.armorInventory.map((armor, index) => {console.log(armor + " " + index); return (<h1 key={index}>{armor?.name}</h1>);})
+                    Reducer?.state.armorInventory.map((armor, index) => {console.log(armor + " " + index); return (<h1 key={index}>{armor?.name}</h1>);})
                 }
                 {
-                    state.weaponInventory.map((weapon, index) => {if (weapon === undefined ) return (<></>);console.log(weapon);return (<h1 key={index}>{weapon?.name}</h1>)})
+                    Reducer?.state.weaponInventory.map((weapon, index) => {if (weapon === undefined ) return (<></>);console.log(weapon);return (<h1 key={index}>{weapon?.name}</h1>)})
                     
                 }
             </div>

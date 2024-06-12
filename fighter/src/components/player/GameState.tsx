@@ -138,4 +138,4 @@ export const GameState = (state : GameStateType, action: Action) => {
 };
 
 
-export const GameContext = createContext<{ state: GameStateType, dispatch: React.Dispatch<Action> } | undefined>(undefined);
+export const GameContext = createContext<{ state: GameStateType, dispatch: React.Dispatch<Action> }>({ state: InitialGameState, dispatch: () => null });

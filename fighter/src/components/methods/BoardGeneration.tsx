@@ -5,7 +5,7 @@ export const HandleBoardGeneration = ({size, level} : {size : number, level:numb
     let index : number;
     let row : Enemy[] = [];
     const Enemies : Enemy[] = EnemyData.filter((enemy) => enemy.level === level); 
-    for (let i = 0; i < size; i++) {
+    for (let i = 0; i < size+1; i++) {
        index = Math.floor(Math.random() * Enemies.length); 
        row.push(Enemies[index]);
     }
