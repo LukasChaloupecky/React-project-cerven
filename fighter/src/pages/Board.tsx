@@ -73,8 +73,11 @@ const Board = () => {
 
     return (
         <>
-            
-            
+            {
+            PlayerHP <= 0
+            ?
+            <h1>Game Over</h1>
+            :
             <>
             { // TODO : HERE WILL BE the SPOTS etc.
             }
@@ -118,7 +121,7 @@ const Board = () => {
                 }
             </div>
             </>
-            
+            }
         </>
     );
 }
