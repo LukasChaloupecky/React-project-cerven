@@ -3,6 +3,8 @@ import { ActionEnum, GameContext, Rules } from "../components/player/GameState";
 import { FightChoice, FightHandler } from "../components/methods/Fighting";
 import { ArmorData } from "../data/ArmorData";
 import { Armor } from "../components/player/Armor";
+import { Weapon } from "../components/player/Weapon";
+import { WeaponData } from "../data/WeaponData";
 
 const Board = () => { 
     const Reducer = useContext(GameContext);
@@ -24,11 +26,18 @@ const Board = () => {
         Reducer?.dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: false});
 
         if (Math.floor(Math.random() * 1) === 1) {
-            let armors : Armor[] = ArmorData.filter((armor) => armor.level == Reducer?.state.currentLevel)
+            let armors : Armor[] = ArmorData.filter((armor) => armor.level == Reducer?.state.currentLevel);
+            let index : number = Math.floor(Math.random() * armors.length-1);
+
             // TODO : select armor from armors on random by the level
+            Reducer.dispatch({type: ActionEnum.ADD_ARMOR, ARMOR: armors[index]});
         }
         else {
+            let weapons : Weapon[] = WeaponData.filter((weapon) => weapon.level == Reducer?.state.currentLevel); 
+            let index : number = Math.floor(Math.random() * weapons.length-1);
             // TODO : select one weapon based on the level that the user currently has
+
+            Reducer.dispatch({type: ActionEnum.ADD_WEAPON, WEAPON: weapons[index]});
         }
     }
 
