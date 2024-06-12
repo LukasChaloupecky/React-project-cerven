@@ -1,6 +1,8 @@
 import { Armor, ArmorEnum, ArmorType } from "../components/player/Armor";
 import { ElementEnum } from "../components/player/Element";
 
+
+// TODO : add images and its sources to the armors
 export const ArmorData: Armor[] = [
     {
         id: ArmorEnum.MetalHelmet,

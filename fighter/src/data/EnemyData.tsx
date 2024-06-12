@@ -1,6 +1,8 @@
 import { EnemyEnum } from "../components/enemy/Enemy";
 import { ElementEnum } from "../components/player/Element";
 
+
+// TODO : add images to the enemies
 export const EnemyData = [
     {
         id : EnemyEnum.Goblin,

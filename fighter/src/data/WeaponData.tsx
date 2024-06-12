@@ -1,6 +1,8 @@
 import { ElementEnum } from "../components/player/Element";
 import { Weapon, WeaponEnum } from "../components/player/Weapon";
 
+
+// TODO : add images to the weapons
 export const WeaponData: Weapon[] = [
     {
         id: WeaponEnum.SWORD,
