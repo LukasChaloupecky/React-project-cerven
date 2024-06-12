@@ -17,7 +17,12 @@ const Board = () => {
     const [PlayerHP, setPlayerHP] = useState(Rules.maxHP); // TODO : Change this to the player's HP
     const [PlayerTurn, setPlayerTurn] = useState(true);
 
-    const HandleAttack = (choice : FightChoice) => {
+    const useEffect = () => {
+        // TODO : useEffect so that the other data is updated and doesn't dispay invalid values
+    };
+
+
+    const HandleAttack = async (choice : FightChoice) => {
         const damage = FightHandler({gamestate: Reducer?.state, choice: choice, enemy : Enemy});
         setEnemy({...Enemy, hp: Enemy.hp - damage});
 
@@ -27,7 +32,7 @@ const Board = () => {
         if (Enemy.hp <= 0) HandeWin();
         else setPlayerTurn(false);
     }
-    const HandeWin = () => {
+    const HandeWin = async () => {
         console.log("Win");
         Reducer?.dispatch({type: ActionEnum.CHANGE_SCORE, SCORE_DIFFERENCE: Enemy.score});
         Reducer?.dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: false});
@@ -44,24 +49,24 @@ const Board = () => {
             let index : number = Math.floor(Math.random() * weapons.length-1);
             // TODO : select one weapon based on the level that the user currently has
 
-            Reducer.dispatch({type: ActionEnum.ADD_WEAPON, WEAPON: weapons[index]});
+             Reducer.dispatch({type: ActionEnum.ADD_WEAPON, WEAPON: weapons[index]});
         }
-        Reducer.dispatch({type : ActionEnum.IS_FIGHT, IS_FIGHT: false})
-        setPlayerHP(Rules.maxHP);
+         Reducer.dispatch({type : ActionEnum.IS_FIGHT, IS_FIGHT: false})
+         setPlayerHP(Rules.maxHP);
     }
 
-    const HandleDefense = () => {
-        setPlayerHP(PlayerHP - DefenseHandler({enemy: Enemy, gamestate: Reducer?.state}));
-        setPlayerTurn(true);
+    const HandleDefense = async () => {
+         setPlayerHP(PlayerHP - DefenseHandler({enemy: Enemy, gamestate: Reducer?.state}));
+         setPlayerTurn(true);
     }
-    const HandleMove = () => {
+    const HandleMove = async () => {
         const move = Math.floor(Math.random() * Rules.maxMove);
-        Reducer?.dispatch({type: ActionEnum.CHANGE_SPOT, SPOT_DIFFERENCE: move});
+         Reducer?.dispatch({type: ActionEnum.CHANGE_SPOT, SPOT_DIFFERENCE: move});
 
-        setEnemy(Reducer?.state.Board[Reducer?.state.currentSpot]);
+         setEnemy(Reducer?.state.Board[Reducer?.state.currentSpot]);
 
-        Reducer?.dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: true});
-        setPlayerTurn(true);
+         Reducer?.dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: true});
+         setPlayerTurn(true);
     }
 
     return (
