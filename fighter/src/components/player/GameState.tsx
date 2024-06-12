@@ -5,6 +5,7 @@ import { Armor, ArmorType } from "./Armor"
 import { Weapon } from "./Weapon"
 import { Enemy } from "../enemy/Enemy"
 import { HandleBoardGeneration } from "../methods/BoardGeneration"
+import { FightChoice, FightHandler } from "../methods/Fighting"
 
 export const Rules = {
     boardSize: 8,
@@ -54,7 +55,9 @@ export enum ActionEnum {
     CHANGE_SPOT,
     CHANGE_LEVEL,
     IS_FIGHT,
-    CHANGE_BOARD
+    CHANGE_BOARD,
+    ATTACK,
+    DEFEND
 }
 export type Action = 
 | {type : ActionEnum.CHANGE_WEAPON, WEAPON_INDEX: number}  // ? WEAPON_ID is in weapon inventory and id is for the item
@@ -64,6 +67,8 @@ export type Action =
 | {type : ActionEnum.CHANGE_LEVEL , LEVEL_DIFFERENCE: number} // ? LEVEL is the new level
 | {type : ActionEnum.IS_FIGHT} // ? LEVEL is the new level
 | {type : ActionEnum.CHANGE_BOARD} // ? LEVEL is the new level
+| {type : ActionEnum.ATTACK       , ATTACK_CHOICE: FightChoice} 
+| {type : ActionEnum.DEFEND}
 
 
 
@@ -89,6 +94,12 @@ export const GameState = (state : GameStateType, action: Action) => {
             return {...state, isFight: !state.isFight};
         case ActionEnum.CHANGE_BOARD:
             return {...state, Board: HandleBoardGeneration({size: Rules.boardSize, level: state.currentLevel})};
+        case ActionEnum.ATTACK: // TODO : Finish the attack
+            let newBoard = structuredClone(state.Board);
+            newBoard[state.currentSpot] = FightHandler({enemy: state.Board[state.currentSpot], gamestate: state, choice: action.ATTACK_CHOICE});
+            return {...state, Board: newBoard};
+        case ActionEnum.DEFEND: // TODO : Finish the defend
+            return {...state};
         default:
             return state
     }
