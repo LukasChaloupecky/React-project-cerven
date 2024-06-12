@@ -22,6 +22,7 @@ function App() {
   );
   return (
     <>
+    <button onClick={() => window.localStorage.removeItem('gameState')}>Clear</button>
     <DndProvider backend={HTML5Backend}>
       <GameContext.Provider value={{state, dispatch}}> 
         <RouterProvider router={router} />

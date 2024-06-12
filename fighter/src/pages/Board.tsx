@@ -121,7 +121,7 @@ const Board = () => {
                 <div>
                 <h1>move</h1>
                     <Link to={"/inventory"}>Inventory</Link>
-                    <button onClick={() => {setLocal(state)}}>Restart</button>
+                    <button onClick={() => {setLocal(state)}}>Save Progress</button>
                     <button onClick={() => HandleMove()}>Move</button>
                 </div>
             }
