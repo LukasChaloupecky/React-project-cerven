@@ -1,13 +1,13 @@
 import { Enemy } from "../enemy/Enemy";
 import { GameStateType, Rules } from "../player/GameState";
 
-export const FightHandler = ({enemy, gamestate, choice} : { enemy : Enemy, gamestate : GameStateType, choice : FightChoice}) => {
+export const FightHandler = ({gamestate, choice} : {gamestate : GameStateType | undefined, choice : FightChoice}) => {
     const correct = Math.floor(Math.random() * 1); 
+    let damage : number = 0;
     if (correct === choice.valueOf()) {
-        let damage = (choice === FightChoice.FastAttack) ? (gamestate.selectedWeapon.damage * Rules.matchingElementMultiplier)  : gamestate.selectedWeapon.damage;
-        enemy.hp -= damage;
+        damage = (choice === FightChoice.FastAttack) ? (gamestate.selectedWeapon.damage * Rules.matchingElementMultiplier)  : gamestate.selectedWeapon.damage;
     }
-    return enemy;
+    return damage;
 }
 
 export const HandleDefense = ({enemy, gamestate} : { enemy : Enemy, gamestate : GameStateType}) => {

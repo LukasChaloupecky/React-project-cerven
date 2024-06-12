@@ -1,14 +1,18 @@
 import { useContext, useState } from "react";
 import { ActionEnum, GameContext } from "../components/player/GameState";
+import { FightChoice, FightHandler } from "../components/methods/Fighting";
 
 const Board = () => { 
     const Reducer = useContext(GameContext);
     const [Enemy, setEnemy] = useState(Reducer?.state.Board[Reducer?.state.currentSpot]);
     const [PlayerTurn, setPlayerTurn] = useState(true);
 
-    const HandleAttack = () => {
+    const HandleAttack = (choice : FightChoice) => {
+        FightHandler({gamestate: Reducer?.state, choice: choice});
     }
     const HandleDefense = () => {
+    }
+    const HandeMove = () => {
     }
 
     return (
@@ -18,16 +22,19 @@ const Board = () => {
             {
             Reducer?.state.isFight 
             ?
-
+                <>
                 <h1>fight</h1>
-                
                 {
-                    PlayerTurn 
+                    PlayerTurn
                     ?
-                        <button onClick={HandleAttack}>Attack</button>
+                    <div>
+                        <button onClick={HandleAttack(FightChoice.FastAttack)}>FastAttack</button>     
+                        <button onClick={HandleAttack(FightChoice.StrongAttack)}>StrongAttack</button>     
+                    </div>           
                     :
-                        <button onClick={HandleDefense}>Defend</button>
+                    <button onClick={HandleDefense}>Defense</button>
                 }
+                </>
                 
             :
                 <h1>move</h1>
