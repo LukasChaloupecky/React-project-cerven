@@ -115,10 +115,12 @@ export const GameState = (state : GameStateType, action: Action) => {
         case ActionEnum.ADD_ARMOR:
             return {...state, armorInventory: [...state.armorInventory, action.ARMOR]};
         case ActionEnum.REMOVE_ARMOR:
+            if (state.armorInventory.length-1 > action.ARMOR_INDEX) throw new Error("Cannot remove the last armor");
             return {...state, armorInventory: state.armorInventory.filter((_, index) => index !== action.ARMOR_INDEX)};
         case ActionEnum.ADD_WEAPON:
             return {...state, weaponInventory: [...state.weaponInventory, action.WEAPON]};
         case ActionEnum.REMOVE_WEAPON:
+            if (state.weaponInventory.length-1 > action.WEAPON_INDEX) throw new Error("Cannot remove the last weapon");
             return {...state, weaponInventory: state.weaponInventory.filter((_, index) => index !== action.WEAPON_INDEX)};
         /*
         case ActionEnum.ATTACK: 
