@@ -6,6 +6,9 @@ import { Armor } from "../components/player/Armor";
 import { Weapon } from "../components/player/Weapon";
 import { WeaponData } from "../data/WeaponData";
 
+
+
+// TODO : !!!!!! BIG decide how to correctly implement the handlers (possibly even useEffects) since the setState is async
 const Board = () => { 
     const Reducer = useContext(GameContext);
     if (Reducer === undefined) throw new Error("useContext must be inside a Provider with a value");
@@ -49,9 +52,6 @@ const Board = () => {
 
     const HandleDefense = () => {
         setPlayerHP(PlayerHP - DefenseHandler({enemy: Enemy, gamestate: Reducer?.state}));
-        console.log("Player HP: " + PlayerHP);
-        console.log("Enemy HP: " + Enemy.hp);
-
         setPlayerTurn(true);
     }
     const HandleMove = () => {
