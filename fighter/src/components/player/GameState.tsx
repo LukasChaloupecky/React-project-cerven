@@ -94,12 +94,31 @@ export const GameState = (state : GameStateType, action: Action) => {
             return {...state, selectedWeapon: state.weaponInventory[action.WEAPON_INDEX]};
         case ActionEnum.CHANGE_ARMOR:
             const armor = state.armorInventory[action.ARMOR_INDEX];
+            let newArmorInventory = state.armorInventory.filter((_, index) => index !== action.ARMOR_INDEX);
+            let currentArmor;
+            switch(armor.type){
+                case ArmorType.HELMET:
+                    currentArmor = state.selectedArmor.helmet;
+                    break;
+                case ArmorType.BREASTPLATE:
+                    currentArmor = state.selectedArmor.breastplate;
+                    break;
+                case ArmorType.PANTS:
+                    currentArmor = state.selectedArmor.pants;
+                    break;
+                case ArmorType.BOOTS:
+                    currentArmor = state.selectedArmor.boots;
+                    break;
+            }
+            newArmorInventory.push(currentArmor);
             return {...state, selectedArmor: {
                 helmet:      armor.type === ArmorType.HELMET      ? armor : state.selectedArmor.helmet,
                 breastplate: armor.type === ArmorType.BREASTPLATE ? armor : state.selectedArmor.breastplate,
                 pants:       armor.type === ArmorType.PANTS       ? armor : state.selectedArmor.pants,
                 boots:       armor.type === ArmorType.BOOTS       ? armor : state.selectedArmor.boots
-            }}; 
+            },
+            armorInventory: newArmorInventory
+        }; 
         case ActionEnum.CHANGE_SCORE:
             return {...state, score: action.SCORE_DIFFERENCE + state.score};
         case ActionEnum.CHANGE_SPOT:

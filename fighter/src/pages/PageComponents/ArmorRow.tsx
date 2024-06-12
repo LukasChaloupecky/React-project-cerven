@@ -10,7 +10,7 @@ const ArmorRow = ({armors} : {armors : Armor[]}) => {
         armors.map((armor) => {
             return (
                 <div className={Styles["column"]}>
-                    <ArmorCard armor={armor} imgUrl=""/>
+                    <ArmorCard armor={armor} imgUrl="" index={5}/>
                 </div>
             )
         })
