@@ -4,11 +4,16 @@ import { FightChoice, FightHandler } from "../components/methods/Fighting";
 
 const Board = () => { 
     const Reducer = useContext(GameContext);
+    if (Reducer === undefined) throw new Error("useContext must be inside a Provider with a value");
+
     const [Enemy, setEnemy] = useState(Reducer?.state.Board[Reducer?.state.currentSpot]);
     const [PlayerTurn, setPlayerTurn] = useState(true);
 
     const HandleAttack = (choice : FightChoice) => {
-        FightHandler({gamestate: Reducer?.state, choice: choice});
+        const damage = FightHandler({gamestate: Reducer?.state, choice: choice});
+        setEnemy({...Enemy, hp: Enemy.hp - damage});
+
+        console.log("Enemy HP: " + Enemy.hp);
     }
     const HandleDefense = () => {
     }
@@ -28,8 +33,8 @@ const Board = () => {
                     PlayerTurn
                     ?
                     <div>
-                        <button onClick={HandleAttack(FightChoice.FastAttack)}>FastAttack</button>     
-                        <button onClick={HandleAttack(FightChoice.StrongAttack)}>StrongAttack</button>     
+                        <button onClick={() => HandleAttack(FightChoice.FastAttack)}>FastAttack</button>     
+                        <button onClick={() => HandleAttack(FightChoice.StrongAttack)}>StrongAttack</button>     
                     </div>           
                     :
                     <button onClick={HandleDefense}>Defense</button>

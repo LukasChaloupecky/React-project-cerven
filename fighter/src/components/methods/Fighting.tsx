@@ -1,7 +1,7 @@
 import { Enemy } from "../enemy/Enemy";
 import { GameStateType, Rules } from "../player/GameState";
 
-export const FightHandler = ({gamestate, choice} : {gamestate : GameStateType | undefined, choice : FightChoice}) => {
+export const FightHandler = ({gamestate, choice} : {gamestate : GameStateType, choice : FightChoice}) => {
     const correct = Math.floor(Math.random() * 1); 
     let damage : number = 0;
     if (correct === choice.valueOf()) {
