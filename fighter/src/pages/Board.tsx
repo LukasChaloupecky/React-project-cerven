@@ -44,7 +44,7 @@ const Board = () => {
 
     const HandleDefense = () => {
 
-        
+
         setPlayerTurn(true);
     }
     const HandeMove = () => {
@@ -69,14 +69,14 @@ const Board = () => {
                         <button onClick={() => HandleAttack(FightChoice.StrongAttack)}>StrongAttack</button>     
                     </div>           
                     :
-                    <button onClick={HandleDefense}>Defense</button>
+                    <button onClick={() => HandleDefense()}>Defense</button>
                 }
                 </>
                 
             :
                 <div>
                 <h1>move</h1>
-                    <button onClick={() => HandeMove}>Move</button>
+                    <button onClick={() => HandeMove()}>Move</button>
                 </div>
             }
         </>
