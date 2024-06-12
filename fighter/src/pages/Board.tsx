@@ -14,6 +14,11 @@ const Board = () => {
         setEnemy({...Enemy, hp: Enemy.hp - damage});
 
         console.log("Enemy HP: " + Enemy.hp);
+
+        if (Enemy.hp <= 0) {
+            Reducer?.dispatch({type: ActionEnum.CHANGE_SCORE, SCORE_DIFFERENCE: Enemy.score});
+            Reducer?.dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: false});
+        }
     }
     const HandleDefense = () => {
     }

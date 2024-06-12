@@ -7,6 +7,7 @@ export type Armor = {
     cost: number // ? For how much score can the item be sold
     type: ArmorType,
     element: ElementEnum,
+    level: number
 }
 export enum ArmorEnum {
     MetalHelmet,

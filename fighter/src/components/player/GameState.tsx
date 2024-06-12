@@ -69,7 +69,7 @@ export type Action =
 | {type : ActionEnum.CHANGE_SCORE , SCORE_DIFFERENCE: number} // ? SCORE difference can be both positive and negative
 | {type : ActionEnum.CHANGE_SPOT  , SPOT_DIFFERENCE: number} // ? SPOT is the new spot
 | {type : ActionEnum.CHANGE_LEVEL , LEVEL_DIFFERENCE: number} // ? LEVEL is the new level
-| {type : ActionEnum.IS_FIGHT} // ? LEVEL is the new level
+| {type : ActionEnum.IS_FIGHT     , IS_FIGHT: boolean} // ? LEVEL is the new level
 | {type : ActionEnum.CHANGE_BOARD} // ? LEVEL is the new level
 /*
 | {type : ActionEnum.ATTACK       , ATTACK_CHOICE: FightChoice} 
@@ -100,7 +100,7 @@ export const GameState = (state : GameStateType, action: Action) => {
         case ActionEnum.CHANGE_LEVEL:
             return {...state, currentLevel: action.LEVEL_DIFFERENCE + state.currentLevel}; 
         case ActionEnum.IS_FIGHT:
-            return {...state, isFight: !state.isFight};
+            return {...state, isFight: action.IS_FIGHT};
         case ActionEnum.CHANGE_BOARD:
             return {...state, Board: HandleBoardGeneration({size: Rules.boardSize, level: state.currentLevel})};
         /*

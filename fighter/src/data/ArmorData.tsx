@@ -8,7 +8,8 @@ export const ArmorData: Armor[] = [
         defense: 5,
         cost: 10,
         type: ArmorType.HELMET,
-        element: ElementEnum.NONE
+        element: ElementEnum.NONE,
+        level: 1
     },
     {
         id: ArmorEnum.LeatherHelmet,
@@ -16,7 +17,8 @@ export const ArmorData: Armor[] = [
         defense: 3,
         cost: 5,
         type: ArmorType.HELMET,
-        element: ElementEnum.NONE
+        element: ElementEnum.NONE,
+        level: 1
     },
     {
         id: ArmorEnum.MetalBreastplate,
@@ -24,7 +26,8 @@ export const ArmorData: Armor[] = [
         defense: 10,
         cost: 20,
         type: ArmorType.BREASTPLATE,
-        element: ElementEnum.NONE
+        element: ElementEnum.NONE,
+        level: 1
     },
     {
         id: ArmorEnum.MetalBreastplate,
@@ -32,7 +35,8 @@ export const ArmorData: Armor[] = [
         defense: 10,
         cost: 20,
         type: ArmorType.BREASTPLATE,
-        element: ElementEnum.NONE
+        element: ElementEnum.NONE,
+        level: 1
     }
     
 ]
