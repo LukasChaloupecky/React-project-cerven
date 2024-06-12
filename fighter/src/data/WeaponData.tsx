@@ -10,7 +10,8 @@ export const WeaponData: Weapon[] = [
         damage: 10,
         cost: 10,
         element: ElementEnum.NONE,
-        level: 1
+        level: 1,
+        ImgUrl: "images/weapon/sword.png"
     },
     {
         id: WeaponEnum.AXE,
@@ -18,7 +19,8 @@ export const WeaponData: Weapon[] = [
         damage: 15,
         cost: 15,
         element: ElementEnum.NONE,
-        level: 1
+        level: 1,
+        ImgUrl: "images/weapon/sword.png"
     },
     {
         id: WeaponEnum.BOW,
@@ -26,7 +28,8 @@ export const WeaponData: Weapon[] = [
         damage: 20,
         cost: 20,
         element: ElementEnum.NONE,
-        level: 1
+        level: 1,
+        ImgUrl: "images/weapon/sword.png"
     },
     {
         id: WeaponEnum.STAFF,
@@ -34,6 +37,7 @@ export const WeaponData: Weapon[] = [
         damage: 25,
         cost: 25,
         element: ElementEnum.NONE,
-        level: 2
+        level: 2,
+        ImgUrl: "images/weapon/sword.png"
     }
 ]
