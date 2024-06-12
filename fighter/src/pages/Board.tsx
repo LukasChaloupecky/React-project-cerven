@@ -112,7 +112,15 @@ const Board = () => {
             <div>
                 <h1>Player : {PlayerHP}</h1>
                 <h1>Enemy : {Enemy.hp}</h1>
-                <h1>Level : {Reducer.state.score}</h1>
+                <h1>Level : {Reducer.state.currentLevel}</h1>
+                <h1>Score : {Reducer.state.score}</h1>
+                <h1>Spot : {Reducer.state.currentSpot}</h1>
+                {
+                    Reducer.state.armorInventory.map((armor, index) => <h1 key={index}>{armor.name}</h1>)
+                }
+                {
+                    Reducer.state.weaponInventory.map((weapon, index) => <h1 key={index}>{weapon.name}</h1>)
+                }
             </div>
             </>
             }
