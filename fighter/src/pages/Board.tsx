@@ -7,6 +7,8 @@ import { Weapon } from "../components/player/Weapon";
 import { WeaponData } from "../data/WeaponData";
 import SelectedItems from "./PageComponents/SelectedItems";
 
+import {RouterProvider, createRoutesFromElements, Route, createBrowserRouter, Link} from "react-router-dom";
+import Inventory from "./Inventory";
 
 
 // TODO : !!!!!! BIG decide how to correctly implement the handlers (possibly even useEffects) since the setState is async
@@ -72,6 +74,7 @@ const Board = () => {
          setPlayerTurn(true);
     }
 
+    
     return (
         <>
             {
@@ -104,6 +107,7 @@ const Board = () => {
             :
                 <div>
                 <h1>move</h1>
+                    <Link to={"/inventory"}>Inventory</Link>
                     <button onClick={() => HandleMove()}>Move</button>
                 </div>
             }
