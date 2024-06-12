@@ -15,7 +15,7 @@ const PlayField = ({board, currentSpot} : {board : Enemy[], currentSpot : number
                 {
                     board.map((enemy, index) => {
                         return (
-                            <div className={Styles["column"]}>
+                            <div className={Styles["column"]} key={index}>
                                 <Slot enemy={enemy} showPlayer={(index === currentSpot) ? true : false}/>
                             </div>
                         )
@@ -41,7 +41,7 @@ const Slot = ({enemy, showPlayer} : {enemy : Enemy, showPlayer : boolean }) => {
     return (
         <>
             <div className={`${Styles["slot"]} ${styleElement[enemy.element]}`}>
-               <p>{(showPlayer ? <p>some</p> : <p></p>)}</p> 
+               <p>{(showPlayer ? "some" : "")}</p> 
             </div> 
         </>
     )

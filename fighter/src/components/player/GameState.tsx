@@ -62,7 +62,8 @@ export enum ActionEnum {
     ADD_ARMOR,
     REMOVE_ARMOR,
     ADD_WEAPON,
-    REMOVE_WEAPON
+    REMOVE_WEAPON,
+    RESTART
     /*
     ATTACK,
     DEFEND
@@ -80,6 +81,7 @@ export type Action =
 | {type : ActionEnum.REMOVE_ARMOR  , ARMOR_INDEX: number}
 | {type : ActionEnum.ADD_WEAPON    , WEAPON: Weapon}
 | {type : ActionEnum.REMOVE_WEAPON  , WEAPON_INDEX: number}
+| {type : ActionEnum.RESTART}
 
 /*
 | {type : ActionEnum.ATTACK       , ATTACK_CHOICE: FightChoice} 
@@ -93,7 +95,7 @@ export const GameState = (state : GameStateType, action: Action) => {
         case ActionEnum.CHANGE_WEAPON:
             return {...state, selectedWeapon: state.weaponInventory[action.WEAPON_INDEX]};
         case ActionEnum.CHANGE_ARMOR:
-            const armor = state.armorInventory[action.ARMOR_INDEX];
+            const armor = structuredClone(state.armorInventory[action.ARMOR_INDEX]);
             let newArmorInventory = state.armorInventory.filter((_, index) => index !== action.ARMOR_INDEX);
             let currentArmor;
             switch(armor.type){
@@ -111,14 +113,16 @@ export const GameState = (state : GameStateType, action: Action) => {
                     break;
             }
             newArmorInventory.push(currentArmor);
-            return {...state, selectedArmor: {
-                helmet:      armor.type === ArmorType.HELMET      ? armor : state.selectedArmor.helmet,
-                breastplate: armor.type === ArmorType.BREASTPLATE ? armor : state.selectedArmor.breastplate,
-                pants:       armor.type === ArmorType.PANTS       ? armor : state.selectedArmor.pants,
-                boots:       armor.type === ArmorType.BOOTS       ? armor : state.selectedArmor.boots
-            },
-            armorInventory: newArmorInventory
-        }; 
+            return {
+                ...state, 
+                selectedArmor: {
+                    helmet:      armor.type === ArmorType.HELMET      ? armor : state.selectedArmor.helmet,
+                    breastplate: armor.type === ArmorType.BREASTPLATE ? armor : state.selectedArmor.breastplate,
+                    pants:       armor.type === ArmorType.PANTS       ? armor : state.selectedArmor.pants,
+                    boots:       armor.type === ArmorType.BOOTS       ? armor : state.selectedArmor.boots
+                },
+                armorInventory: newArmorInventory
+            }; 
         case ActionEnum.CHANGE_SCORE:
             return {...state, score: action.SCORE_DIFFERENCE + state.score};
         case ActionEnum.CHANGE_SPOT:
@@ -146,6 +150,8 @@ export const GameState = (state : GameStateType, action: Action) => {
         case ActionEnum.REMOVE_WEAPON:
             if (state.weaponInventory.length-1 > action.WEAPON_INDEX) throw new Error("Cannot remove the last weapon");
             return {...state, weaponInventory: state.weaponInventory.filter((_, index) => index !== action.WEAPON_INDEX)};
+        case ActionEnum.RESTART:
+            return InitialGameState;
         /*
         case ActionEnum.ATTACK: 
             let newBoard = structuredClone(state.Board);

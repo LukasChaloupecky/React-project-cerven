@@ -11,10 +11,13 @@ import {RouterProvider, createRoutesFromElements, Route, createBrowserRouter, Li
 import Inventory from "./Inventory";
 import PlayField from "./PageComponents/PlayField";
 import EnemyCard from "./CardTypes/EnemyCard";
+import { useLocalStorage } from "../components/methods/useLocalStorage";
 
 
 // TODO : !!!!!! BIG decide how to correctly implement the handlers (possibly even useEffects) since the setState is async
 const Board = () => { 
+    const { setLocal } = useLocalStorage('gameState');
+
     const state = useContext(GameContext).state;
     const dispatch = useContext(GameContext).dispatch;
 
@@ -26,10 +29,9 @@ const Board = () => {
         // TODO : useEffect so that the other data is updated and doesn't dispay invalid values
         if (Enemy.hp <= 0) HandeWin();
     }, [Enemy.hp]);
-    useEffect(() => { 
-
+    useEffect(() => {
+        if (PlayerHP <= 0 ) dispatch({type: ActionEnum.RESTART}) 
     }, [PlayerHP]);
-
 
     const HandleAttack = (choice : FightChoice) => {
         const damage = FightHandler({gamestate: state, choice: choice, enemy : Enemy});
@@ -75,14 +77,21 @@ const Board = () => {
          dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: true});
          setPlayerTurn(true);
     }
+    const HandleRestart = () => {
+        setPlayerHP(Rules.maxHP);
+        setEnemy(state.Board[state.currentSpot]);
 
+    }
     
     return (
         <>
             {
             PlayerHP <= 0
             ?
-            <h1>Game Over</h1>
+            <>
+                <h1>Game Over</h1>
+                <button onClick={() => {HandleRestart()}}>Restart</button>
+            </>
             :
             <>
             { // TODO : HERE WILL BE the SPOTS etc.
@@ -112,6 +121,7 @@ const Board = () => {
                 <div>
                 <h1>move</h1>
                     <Link to={"/inventory"}>Inventory</Link>
+                    <button onClick={() => {setLocal(state)}}>Restart</button>
                     <button onClick={() => HandleMove()}>Move</button>
                 </div>
             }

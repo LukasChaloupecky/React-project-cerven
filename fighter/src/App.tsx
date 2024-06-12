@@ -10,7 +10,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
 function App() {
-  const [state, dispatch] = useReducer(GameState, InitialGameState)
+  const [state, dispatch] = (window.localStorage.getItem('gameState') !== undefined) ? useReducer(GameState, JSON.parse(window.localStorage.getItem('gameState') || '{}')) : useReducer(GameState, InitialGameState)
   const router = createBrowserRouter(
     createRoutesFromElements(
         <>
