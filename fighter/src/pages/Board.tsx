@@ -22,7 +22,7 @@ const Board = () => {
     };
 
 
-    const HandleAttack = async (choice : FightChoice) => {
+    const HandleAttack = (choice : FightChoice) => {
         const damage = FightHandler({gamestate: Reducer?.state, choice: choice, enemy : Enemy});
         setEnemy({...Enemy, hp: Enemy.hp - damage});
 
@@ -32,7 +32,7 @@ const Board = () => {
         if (Enemy.hp <= 0) HandeWin();
         else setPlayerTurn(false);
     }
-    const HandeWin = async () => {
+    const HandeWin = () => {
         console.log("Win");
         Reducer?.dispatch({type: ActionEnum.CHANGE_SCORE, SCORE_DIFFERENCE: Enemy.score});
         Reducer?.dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: false});
@@ -55,11 +55,11 @@ const Board = () => {
          setPlayerHP(Rules.maxHP);
     }
 
-    const HandleDefense = async () => {
+    const HandleDefense = () => {
          setPlayerHP(PlayerHP - DefenseHandler({enemy: Enemy, gamestate: Reducer?.state}));
          setPlayerTurn(true);
     }
-    const HandleMove = async () => {
+    const HandleMove = () => {
         const move = Math.floor(Math.random() * Rules.maxMove);
          Reducer?.dispatch({type: ActionEnum.CHANGE_SPOT, SPOT_DIFFERENCE: move});
 
