@@ -58,6 +58,10 @@ export enum ActionEnum {
     CHANGE_LEVEL,
     IS_FIGHT,
     CHANGE_BOARD,
+    ADD_ARMOR,
+    REMOVE_ARMOR,
+    ADD_WEAPON,
+    REMOVE_WEAPON
     /*
     ATTACK,
     DEFEND
@@ -71,6 +75,11 @@ export type Action =
 | {type : ActionEnum.CHANGE_LEVEL , LEVEL_DIFFERENCE: number} // ? LEVEL is the new level
 | {type : ActionEnum.IS_FIGHT     , IS_FIGHT: boolean} // ? LEVEL is the new level
 | {type : ActionEnum.CHANGE_BOARD} // ? LEVEL is the new level
+| {type : ActionEnum.ADD_ARMOR    , ARMOR: Armor}
+| {type : ActionEnum.REMOVE_ARMOR  , ARMOR_INDEX: number}
+| {type : ActionEnum.ADD_WEAPON    , WEAPON: Weapon}
+| {type : ActionEnum.REMOVE_WEAPON  , WEAPON_INDEX: number}
+
 /*
 | {type : ActionEnum.ATTACK       , ATTACK_CHOICE: FightChoice} 
 | {type : ActionEnum.DEFEND}
@@ -103,6 +112,14 @@ export const GameState = (state : GameStateType, action: Action) => {
             return {...state, isFight: action.IS_FIGHT};
         case ActionEnum.CHANGE_BOARD:
             return {...state, Board: HandleBoardGeneration({size: Rules.boardSize, level: state.currentLevel})};
+        case ActionEnum.ADD_ARMOR:
+            return {...state, armorInventory: [...state.armorInventory, action.ARMOR]};
+        case ActionEnum.REMOVE_ARMOR:
+            return {...state, armorInventory: state.armorInventory.filter((_, index) => index !== action.ARMOR_INDEX)};
+        case ActionEnum.ADD_WEAPON:
+            return {...state, weaponInventory: [...state.weaponInventory, action.WEAPON]};
+        case ActionEnum.REMOVE_WEAPON:
+            return {...state, weaponInventory: state.weaponInventory.filter((_, index) => index !== action.WEAPON_INDEX)};
         /*
         case ActionEnum.ATTACK: 
             let newBoard = structuredClone(state.Board);

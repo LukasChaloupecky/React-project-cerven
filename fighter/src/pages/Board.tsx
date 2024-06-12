@@ -15,11 +15,20 @@ const Board = () => {
 
         console.log("Enemy HP: " + Enemy.hp);
 
-        if (Enemy.hp <= 0) {
-            Reducer?.dispatch({type: ActionEnum.CHANGE_SCORE, SCORE_DIFFERENCE: Enemy.score});
-            Reducer?.dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: false});
+        if (Enemy.hp <= 0) HandeWin();
+    }
+    const HandeWin = () => {
+        Reducer?.dispatch({type: ActionEnum.CHANGE_SCORE, SCORE_DIFFERENCE: Enemy.score});
+        Reducer?.dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: false});
+
+        if (Math.floor(Math.random() * 1) === 1) {
+            
+        }
+        else {
+
         }
     }
+
     const HandleDefense = () => {
     }
     const HandeMove = () => {
