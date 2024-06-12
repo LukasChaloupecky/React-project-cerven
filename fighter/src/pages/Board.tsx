@@ -20,6 +20,7 @@ const Board = () => {
         console.log("Enemy HP: " + Enemy.hp);
 
         if (Enemy.hp <= 0) HandeWin();
+        else setPlayerTurn(false);
     }
     const HandeWin = () => {
         Reducer?.dispatch({type: ActionEnum.CHANGE_SCORE, SCORE_DIFFERENCE: Enemy.score});
@@ -42,6 +43,9 @@ const Board = () => {
     }
 
     const HandleDefense = () => {
+
+        
+        setPlayerTurn(true);
     }
     const HandeMove = () => {
         const move = Math.floor(Math.random() * Rules.maxMove);
