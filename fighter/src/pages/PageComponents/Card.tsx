@@ -1,13 +1,18 @@
+import { Armor } from '../../components/player/Armor';
 import Styles from './Card.module.css'
+import Image from './metal_helmet.jpeg'
 
-const Card = ({title, imgUrl} : {title : string, imgUrl : string}) => {
+const ArmorCard = ({armor, imgUrl} : {armor : Armor, imgUrl : string}) => {
     return (
         <div className={Styles["card"]}>
-            <img src="./metal_helmet.jpeg"/>
+            <img className={Styles["card__image"]} src={Image}/>
             <div className={Styles["container"]}>
-                <h1>{title}</h1>
+                <h4>{armor.name}</h4>
+                <p>{armor.defense}</p>
+                <p>{armor.element}</p>
+                <p>{armor.cost}</p>
             </div>
         </div>
     )
 }
-export default Card;
+export default ArmorCard;

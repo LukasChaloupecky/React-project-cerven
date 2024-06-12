@@ -15,15 +15,7 @@ const Inventory = () => {
         <ArmorRow armors={state.armorInventory.filter((armor) => armor.type === ArmorType.PANTS)}/>
         <ArmorRow armors={state.armorInventory.filter((armor) => armor.type === ArmorType.BOOTS)}/>
 
-        {
-            state.weaponInventory.map((weapon) => {
-                return (
-                    <div>
-                        <Card title={weapon.name} imgUrl=""/>
-                    </div>
-                )
-            })
-        }
+        
         < Link to={"/Board"}>Back</Link>
         </>
     )

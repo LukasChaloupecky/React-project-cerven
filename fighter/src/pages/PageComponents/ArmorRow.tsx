@@ -1,19 +1,21 @@
 import { Armor } from "../../components/player/Armor";
-import Card from "./Card";
+import ArmorCard from "./Card";
+import Styles from './ArmorRow.module.css'
+
 
 const ArmorRow = ({armors} : {armors : Armor[]}) => {
     return (
-        <>
+        <div className={Styles["row"]}>
         {
         armors.map((armor) => {
             return (
-                <div>
-                    <Card title={armor.name} imgUrl=""/>
+                <div className={Styles["column"]}>
+                    <ArmorCard armor={armor} imgUrl=""/>
                 </div>
             )
         })
         }
-        </>
+        </div>
     )
 }
 
