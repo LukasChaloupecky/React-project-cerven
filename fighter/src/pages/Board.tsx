@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { ActionEnum, GameContext, Rules } from "../components/player/GameState";
-import { FightChoice, FightHandler } from "../components/methods/Fighting";
+import { DefenseHandler, FightChoice, FightHandler } from "../components/methods/Fighting";
 import { ArmorData } from "../data/ArmorData";
 import { Armor } from "../components/player/Armor";
 import { Weapon } from "../components/player/Weapon";
@@ -11,6 +11,7 @@ const Board = () => {
     if (Reducer === undefined) throw new Error("useContext must be inside a Provider with a value");
 
     const [Enemy, setEnemy] = useState(Reducer?.state.Board[Reducer?.state.currentSpot]);
+    const [PlayerHP, setPlayerHP] = useState(Rules.maxHP); // TODO : Change this to the player's HP
     const [PlayerTurn, setPlayerTurn] = useState(true);
 
     const HandleAttack = (choice : FightChoice) => {
@@ -43,7 +44,8 @@ const Board = () => {
     }
 
     const HandleDefense = () => {
-
+        setPlayerHP(DefenseHandler({enemy: Enemy, gamestate: Reducer?.state}));
+        console.log("Player HP: " + PlayerHP);
 
         setPlayerTurn(true);
     }

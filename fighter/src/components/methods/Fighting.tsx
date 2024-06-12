@@ -10,7 +10,7 @@ export const FightHandler = ({gamestate, choice} : {gamestate : GameStateType, c
     return damage;
 }
 
-export const HandleDefense = ({enemy, gamestate} : { enemy : Enemy, gamestate : GameStateType}) => {
+export const DefenseHandler = ({enemy, gamestate} : { enemy : Enemy, gamestate : GameStateType}) => {
     const IsAttacked = Math.floor(Math.random() * 1); // TODO : Decide about the 1 => 50% chance of getting attacked
     let HP : number = Rules.maxHP;
 
