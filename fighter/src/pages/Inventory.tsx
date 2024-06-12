@@ -3,6 +3,7 @@ import { GameContext } from "../components/player/GameState";
 import { ArmorType } from "../components/player/Armor";
 import Card from "./PageComponents/Card";
 import ArmorRow from "./PageComponents/ArmorRow";
+import { Link } from "react-router-dom";
 
 const Inventory = () => {
     const state = useContext(GameContext).state;
@@ -23,6 +24,7 @@ const Inventory = () => {
                 )
             })
         }
+        < Link to={"/Board"}>Back</Link>
         </>
     )
 }
