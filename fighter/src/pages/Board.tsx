@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ActionEnum, GameContext, Rules } from "../components/player/GameState";
 import { DefenseHandler, FightChoice, FightHandler } from "../components/methods/Fighting";
 import { ArmorData } from "../data/ArmorData";
@@ -15,15 +15,17 @@ const Board = () => {
     const [PlayerTurn, setPlayerTurn] = useState(true);
 
     const HandleAttack = (choice : FightChoice) => {
-        const damage = FightHandler({gamestate: Reducer?.state, choice: choice});
+        const damage = FightHandler({gamestate: Reducer?.state, choice: choice, enemy : Enemy});
         setEnemy({...Enemy, hp: Enemy.hp - damage});
 
+        console.log("Enemy HP: " + Enemy.hp);
         console.log("Enemy HP: " + Enemy.hp);
 
         if (Enemy.hp <= 0) HandeWin();
         else setPlayerTurn(false);
     }
     const HandeWin = () => {
+        console.log("Win");
         Reducer?.dispatch({type: ActionEnum.CHANGE_SCORE, SCORE_DIFFERENCE: Enemy.score});
         Reducer?.dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: false});
 
@@ -41,17 +43,25 @@ const Board = () => {
 
             Reducer.dispatch({type: ActionEnum.ADD_WEAPON, WEAPON: weapons[index]});
         }
+        Reducer.dispatch({type : ActionEnum.IS_FIGHT, IS_FIGHT: false})
+        setPlayerHP(Rules.maxHP);
     }
 
     const HandleDefense = () => {
-        setPlayerHP(DefenseHandler({enemy: Enemy, gamestate: Reducer?.state}));
+        setPlayerHP(PlayerHP - DefenseHandler({enemy: Enemy, gamestate: Reducer?.state}));
         console.log("Player HP: " + PlayerHP);
+        console.log("Enemy HP: " + Enemy.hp);
 
         setPlayerTurn(true);
     }
-    const HandeMove = () => {
+    const HandleMove = () => {
         const move = Math.floor(Math.random() * Rules.maxMove);
         Reducer?.dispatch({type: ActionEnum.CHANGE_SPOT, SPOT_DIFFERENCE: move});
+
+        setEnemy(Reducer?.state.Board[Reducer?.state.currentSpot]);
+
+        Reducer?.dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: true});
+        setPlayerTurn(true);
     }
 
     return (
@@ -69,6 +79,7 @@ const Board = () => {
                     <div>
                         <button onClick={() => HandleAttack(FightChoice.FastAttack)}>FastAttack</button>     
                         <button onClick={() => HandleAttack(FightChoice.StrongAttack)}>StrongAttack</button>     
+                        
                     </div>           
                     :
                     <button onClick={() => HandleDefense()}>Defense</button>
@@ -78,9 +89,13 @@ const Board = () => {
             :
                 <div>
                 <h1>move</h1>
-                    <button onClick={() => HandeMove()}>Move</button>
+                    <button onClick={() => HandleMove()}>Move</button>
                 </div>
             }
+            <div>
+                <h1>Player : {PlayerHP}</h1>
+                <h1>Enemy : {Enemy.hp}</h1>
+            </div>
         </>
     );
 }
