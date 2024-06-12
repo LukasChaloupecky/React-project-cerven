@@ -1,4 +1,7 @@
-const WeaponsData: Weapon[] = [
+import { ElementEnum } from "../components/player/Element";
+import { Weapon, WeaponEnum } from "../components/player/Weapon";
+
+export const WeaponData: Weapon[] = [
     {
         id: WeaponEnum.SWORD,
         name: "Sword",

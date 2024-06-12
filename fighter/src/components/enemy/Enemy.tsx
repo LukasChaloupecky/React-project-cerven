@@ -1,4 +1,6 @@
-type Enemy = {
+import { ElementEnum } from "../player/Element";
+
+export type Enemy = {
     id : EnemyEnum,
     name : string,
     hp : number,
@@ -9,6 +11,6 @@ type Enemy = {
     // TODO : image : string
 }
 
-enum EnemyEnum {
+export enum EnemyEnum {
     Goblin
 }

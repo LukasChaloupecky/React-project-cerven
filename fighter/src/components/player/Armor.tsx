@@ -1,4 +1,6 @@
-type Armor = {
+import { ElementEnum } from "./Element"
+
+export type Armor = {
     id: ArmorEnum,
     name: string,
     defense: number,
@@ -6,13 +8,13 @@ type Armor = {
     type: ArmorType,
     element: ElementEnum,
 }
-enum ArmorEnum {
+export enum ArmorEnum {
     MetalHelmet,
     LeatherHelmet,
     MetalBreastplate,
 }
 
-enum ArmorType{
+export enum ArmorType{
     HELMET,
     BREASTPLATE,
     PANTS,

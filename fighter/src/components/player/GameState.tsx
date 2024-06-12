@@ -1,4 +1,8 @@
 import { createContext } from "react"
+import { WeaponData } from "../../data/WeaponData"
+import { ArmorData } from "../../data/ArmorData"
+import { Armor, ArmorType } from "./Armor"
+import { Weapon } from "./Weapon"
 
 
 
@@ -18,12 +22,12 @@ export type GameStateType = {
     currentLevel: number // ? The level of the room
 }
 export const InitialGameState: GameStateType = {
-    selectedWeapon: WeaponsData[0],
+    selectedWeapon: WeaponData[0],
     selectedArmor: {
         helmet: ArmorData[0],
-        breastplate: ArmorData[2],
-        pants: ArmorData[3],
-        boots: ArmorData[4]
+        breastplate: ArmorData[1],
+        pants: ArmorData[2],
+        boots: ArmorData[3]
     },
     weaponInventory: [],
     armorInventory: [],

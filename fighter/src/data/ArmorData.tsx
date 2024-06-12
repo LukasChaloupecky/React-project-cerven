@@ -1,4 +1,7 @@
-const ArmorData: Armor[] = [
+import { Armor, ArmorEnum, ArmorType } from "../components/player/Armor";
+import { ElementEnum } from "../components/player/Element";
+
+export const ArmorData: Armor[] = [
     {
         id: ArmorEnum.MetalHelmet,
         name: "Metal Helmet",
@@ -13,6 +16,14 @@ const ArmorData: Armor[] = [
         defense: 3,
         cost: 5,
         type: ArmorType.HELMET,
+        element: ElementEnum.NONE
+    },
+    {
+        id: ArmorEnum.MetalBreastplate,
+        name: "Metal Breastplate",
+        defense: 10,
+        cost: 20,
+        type: ArmorType.BREASTPLATE,
         element: ElementEnum.NONE
     },
     {

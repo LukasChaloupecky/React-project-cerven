@@ -1,4 +1,4 @@
-enum ElementEnum {
+export enum ElementEnum {
     NONE,
     Fire,
     Storm,
