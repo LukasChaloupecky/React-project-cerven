@@ -7,7 +7,8 @@ import { Enemy } from "../enemy/Enemy"
 import { HandleBoardGeneration } from "../methods/BoardGeneration"
 
 export const Rules = {
-    boardSize: 8
+    boardSize: 8,
+    matchingElementMultiplier: 2
 }
 
 type ArmorState = {
