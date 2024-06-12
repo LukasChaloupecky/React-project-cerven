@@ -1,0 +1,14 @@
+
+.card {
+    width: 400px;
+    min-height: 200px;
+    border: 1px solid black;
+}
+
+.card__img {
+    width: 100%;
+}
+
+.card__body {
+
+}

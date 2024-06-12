@@ -6,17 +6,17 @@ import { ElementEnum } from '../../components/player/Element';
 
 
 
-const PlayField = ({board} : {board : Enemy[]}) => {
+const PlayField = ({board, currentSpot} : {board : Enemy[], currentSpot : number}) => {
     // Add your component  logic here
 
     return (
         <>
             <div className={Styles["row"]}>
                 {
-                    board.map((enemy) => {
+                    board.map((enemy, index) => {
                         return (
                             <div className={Styles["column"]}>
-                                <Slot enemy={enemy}/>
+                                <Slot enemy={enemy} showPlayer={(index === currentSpot) ? true : false}/>
                             </div>
                         )
                     })
@@ -29,7 +29,7 @@ const PlayField = ({board} : {board : Enemy[]}) => {
 
 
 
-const Slot = ({enemy} : {enemy : Enemy}) => {
+const Slot = ({enemy, showPlayer} : {enemy : Enemy, showPlayer : boolean }) => {
     const styleElement = {
         [ElementEnum.NONE]  : Styles["slot--none"],
         [ElementEnum.Fire]  : Styles["slot--fire"],
@@ -41,7 +41,7 @@ const Slot = ({enemy} : {enemy : Enemy}) => {
     return (
         <>
             <div className={`${Styles["slot"]} ${styleElement[enemy.element]}`}>
-               <p>slot</p> 
+               <p>{(showPlayer ? <p>some</p> : <p></p>)}</p> 
             </div> 
         </>
     )

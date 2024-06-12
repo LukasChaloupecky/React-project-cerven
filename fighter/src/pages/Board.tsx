@@ -10,6 +10,7 @@ import SelectedItems from "./PageComponents/SelectedItems";
 import {RouterProvider, createRoutesFromElements, Route, createBrowserRouter, Link} from "react-router-dom";
 import Inventory from "./Inventory";
 import PlayField from "./PageComponents/PlayField";
+import EnemyCard from "./CardTypes/EnemyCard";
 
 
 // TODO : !!!!!! BIG decide how to correctly implement the handlers (possibly even useEffects) since the setState is async
@@ -86,6 +87,8 @@ const Board = () => {
             <>
             { // TODO : HERE WILL BE the SPOTS etc.
             }
+            <EnemyCard enemy={state.Board[state.currentSpot]}/>
+            <PlayField board={state.Board} currentSpot={state.currentSpot}/>
             {
             state.isFight 
             ?
@@ -95,7 +98,6 @@ const Board = () => {
                     PlayerTurn
                     ?
                     <div>
-                        <PlayField board={state.Board}/>
                         <button onClick={() => HandleAttack(FightChoice.FastAttack)}>FastAttack</button>     
                         <button onClick={() => HandleAttack(FightChoice.StrongAttack)}>StrongAttack</button>     
                         

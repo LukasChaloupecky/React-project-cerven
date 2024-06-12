@@ -1,6 +1,7 @@
 .row {
     display: flex;
     margin-bottom: 10px;
+    flex-wrap: wrap;
 }
 
 .slot {
