@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { ActionEnum, GameContext } from "../components/player/GameState";
+import { ActionEnum, GameContext, Rules } from "../components/player/GameState";
 import { FightChoice, FightHandler } from "../components/methods/Fighting";
 
 const Board = () => { 
@@ -18,6 +18,8 @@ const Board = () => {
     const HandleDefense = () => {
     }
     const HandeMove = () => {
+        const move = Math.floor(Math.random() * Rules.maxMove);
+        Reducer?.dispatch({type: ActionEnum.CHANGE_SPOT, SPOT_DIFFERENCE: move});
     }
 
     return (
@@ -42,7 +44,10 @@ const Board = () => {
                 </>
                 
             :
+                <div>
                 <h1>move</h1>
+                    <button onClick={() => HandeMove}>Move</button>
+                </div>
             }
         </>
     );

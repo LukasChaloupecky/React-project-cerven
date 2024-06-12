@@ -7,10 +7,11 @@ import { Enemy } from "../enemy/Enemy"
 import { HandleBoardGeneration } from "../methods/BoardGeneration"
 
 export const Rules = {
-    boardSize: 8,
+    boardSize: 15,
     matchingElementMultiplier: 2,
     elementProtectionMultiplier: 0.1,
-    maxHP : 100
+    maxHP : 100,
+    maxMove : 3
 }
 
 type ArmorState = {
@@ -92,7 +93,10 @@ export const GameState = (state : GameStateType, action: Action) => {
         case ActionEnum.CHANGE_SCORE:
             return {...state, score: action.SCORE_DIFFERENCE + state.score};
         case ActionEnum.CHANGE_SPOT:
-            return {...state, currentSpot: action.SPOT_DIFFERENCE + state.currentSpot};
+            let overlap = action.SPOT_DIFFERENCE + state.currentSpot - Rules.boardSize;
+            let levelIncrease = (overlap > 0) ? 1 : 0;
+            let board = (levelIncrease > 0) ? HandleBoardGeneration({size: Rules.boardSize, level: state.currentLevel + levelIncrease}) : state.Board;
+            return {...state, currentSpot: (overlap > 0) ? overlap : action.SPOT_DIFFERENCE + state.currentSpot, currentLevel: state.currentLevel + levelIncrease, Board: board};
         case ActionEnum.CHANGE_LEVEL:
             return {...state, currentLevel: action.LEVEL_DIFFERENCE + state.currentLevel}; 
         case ActionEnum.IS_FIGHT:
