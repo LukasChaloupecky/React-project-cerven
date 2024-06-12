@@ -62,7 +62,7 @@ const Board = () => {
          setPlayerTurn(true);
     }
     const HandleMove = () => {
-        const move = Math.floor(Math.random() * Rules.maxMove);
+        const move = Math.floor(Math.random() * Rules.maxMove*2);
          dispatch({type: ActionEnum.CHANGE_SPOT, SPOT_DIFFERENCE: move});
 
          setEnemy(state.Board[state.currentSpot]);
