@@ -3,7 +3,7 @@ import { ActionEnum, GameContext } from "../components/player/GameState";
 
 const Board = () => { 
     const Reducer = useContext(GameContext);
-    
+    const [Enemy, setEnemy] = useState(Reducer?.state.Board[Reducer?.state.currentSpot]);
     return (
         <>
             { // TODO : HERE WILL BE the SPOTS etc.
