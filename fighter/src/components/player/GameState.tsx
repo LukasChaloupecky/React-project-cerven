@@ -113,12 +113,16 @@ export const GameState = (state : GameStateType, action: Action) => {
         case ActionEnum.CHANGE_BOARD:
             return {...state, Board: HandleBoardGeneration({size: Rules.boardSize, level: state.currentLevel})};
         case ActionEnum.ADD_ARMOR:
-            return {...state, armorInventory: [...state.armorInventory, action.ARMOR]};
+            let armorInventory = structuredClone(state.armorInventory);
+            armorInventory.push(action.ARMOR);
+            return {...state, armorInventory: armorInventory};
         case ActionEnum.REMOVE_ARMOR:
             if (state.armorInventory.length-1 > action.ARMOR_INDEX) throw new Error("Cannot remove the last armor");
             return {...state, armorInventory: state.armorInventory.filter((_, index) => index !== action.ARMOR_INDEX)};
         case ActionEnum.ADD_WEAPON:
-            return {...state, weaponInventory: [...state.weaponInventory, action.WEAPON]};
+            let weaponInventory = structuredClone(state.weaponInventory);
+            weaponInventory.push(action.WEAPON);
+            return {...state, weaponInventory: weaponInventory};
         case ActionEnum.REMOVE_WEAPON:
             if (state.weaponInventory.length-1 > action.WEAPON_INDEX) throw new Error("Cannot remove the last weapon");
             return {...state, weaponInventory: state.weaponInventory.filter((_, index) => index !== action.WEAPON_INDEX)};

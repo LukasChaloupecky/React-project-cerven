@@ -39,23 +39,22 @@ const Board = () => {
         console.log("Win");
         dispatch({type: ActionEnum.CHANGE_SCORE, SCORE_DIFFERENCE: Enemy.score});
         dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: false});
-        
+        setPlayerHP(Rules.maxHP);
+
         if (Math.floor(Math.random() * 2) === 1) {
             let armors : Armor[] = ArmorData.filter((armor) => armor.level <= state.currentLevel);
-            let index : number = Math.floor(Math.random() * armors.length-1);
+            let index : number = Math.floor(Math.random() * armors.length);
 
             // TODO : select armor from armors on random by the level
             dispatch({type: ActionEnum.ADD_ARMOR, ARMOR: armors[index]});
         }
         else {
             let weapons : Weapon[] = WeaponData.filter((weapon) => weapon.level <= state.currentLevel); 
-            let index : number = Math.floor(Math.random() * weapons.length-1);
+            let index : number = Math.floor(Math.random() * weapons.length);
             // TODO : select one weapon based on the level that the user currently has
 
              dispatch({type: ActionEnum.ADD_WEAPON, WEAPON: weapons[index]});
         }
-         dispatch({type : ActionEnum.IS_FIGHT, IS_FIGHT: false})
-         setPlayerHP(Rules.maxHP);
     }
 
     const HandleDefense = () => {
@@ -111,10 +110,10 @@ const Board = () => {
                 <h1>Spot : {state.currentSpot}</h1>
                 {
                  // TODO : for whatever reason its called twice   (THE MAP)
-                    state.armorInventory.map((armor, index) => {console.log(armor + " " + index); return (<h1 key={index}>{armor?.name}</h1>);})
+                    state.armorInventory.map((armor, index) => {console.log(armor + " " + index); return (<h1 key={index}>{armor.name}</h1>);})
                 }
                 {
-                    state.weaponInventory.map((weapon, index) => {if (weapon === undefined ) return (<></>);console.log(weapon);return (<h1 key={index}>{weapon?.name}</h1>)})
+                    state.weaponInventory.map((weapon, index) => {console.log(state.weaponInventory.length);console.log(weapon);return (<h1 key={index}>{weapon?.name}</h1>)})
                     
                 }
             </div>
