@@ -5,6 +5,7 @@ import Image from './metal_helmet.jpeg'
 const ArmorCard = ({armor, imgUrl} : {armor : Armor, imgUrl : string}) => {
     return (
         <div className={Styles["card"]}>
+            <img src={require("../../../public/armors/metal_helmet.jpeg")}/>
             <img className={Styles["card__image"]} src={Image}/>
             <div className={Styles["container"]}>
                 <h4>{armor.name}</h4>
