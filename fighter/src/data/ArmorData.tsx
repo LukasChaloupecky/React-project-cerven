@@ -12,37 +12,36 @@ export const ArmorData: Armor[] = [
         type: ArmorType.HELMET,
         element: ElementEnum.NONE,
         level: 1,
-        ImgUrl: "/armor/metal_helmet.png"
+        ImgUrl: "/armors/metal_helmet.jpeg"
     },
     {
         id: ArmorEnum.LeatherHelmet,
         name: "Leather Helmet",
         defense: 3,
         cost: 5,
-        type: ArmorType.HELMET,
+        type: ArmorType.BREASTPLATE,
         element: ElementEnum.NONE,
         level: 1,
-        ImgUrl: "images/armor/leather_helmet.png"
+        ImgUrl: '/armors/metal_helmet.jpeg'
     },
     {
         id: ArmorEnum.MetalBreastplate,
         name: "Metal Breastplate",
         defense: 10,
         cost: 20,
-        type: ArmorType.BREASTPLATE,
+        type: ArmorType.PANTS,
         element: ElementEnum.NONE,
-        level: 2,
-        ImgUrl: "images/armor/metal_breastplate.png"
+        level: 1,
+        ImgUrl: "/armors/metal_helmet.jpeg"
     },
     {
         id: ArmorEnum.MetalBreastplate,
         name: "Metal Breastplate",
         defense: 10,
         cost: 20,
-        type: ArmorType.BREASTPLATE,
+        type: ArmorType.BOOTS,
         element: ElementEnum.NONE,
         level: 1,
-        ImgUrl: "images/armor/metal_breastplate.png"
+        ImgUrl: "/armors/metal_helmet.jpeg"
     }
-    
 ]

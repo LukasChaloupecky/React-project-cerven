@@ -17,12 +17,13 @@ const EnemyCard = ({enemy} : {enemy : Enemy}) => {
   */
     return (
         <div className={Styles["card"]}>
-            <div className={Styles["card__body"]}>
-                <h2>{enemy.name}</h2>
-                <p>MaxHP: {enemy.hp}</p>
-                <p>Attack: {enemy.damage}</p>
-                <p>Element: {enemy.element}</p>
-            </div>
+          <img src={('/vite.svg')} alt="Card image" className={Styles["card__image"]}/>
+          <div className={Styles["card__body"]}>
+              <h2>{enemy.name}</h2>
+              <p>MaxHP: {enemy.hp}</p>
+              <p>Attack: {enemy.damage}</p>
+              <p>Element: {enemy.element}</p>
+          </div>
         </div>
     );
 };

@@ -4,3 +4,4 @@ REACT ROUTER = between tutorial and game itself
 DnD = for changing inventory
 
 
+Predelat tak aby v gamestatu se neukladali jednotlive enemy, armor a wepaon ale jen ID jako ENUM

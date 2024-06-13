@@ -12,12 +12,13 @@ import Inventory from "./Inventory";
 import PlayField from "./PageComponents/PlayField";
 import EnemyCard from "./CardTypes/EnemyCard";
 import { useLocalStorage } from "../components/methods/useLocalStorage";
+import Header from "./PageComponents/Header";
+import { url } from "inspector";
 
 
 // TODO : !!!!!! BIG decide how to correctly implement the handlers (possibly even useEffects) since the setState is async
 const Board = () => { 
     const { setLocal } = useLocalStorage('gameState');
-
     const state = useContext(GameContext).state;
     const dispatch = useContext(GameContext).dispatch;
 
@@ -96,6 +97,7 @@ const Board = () => {
             <>
             { // TODO : HERE WILL BE the SPOTS etc.
             }
+            < Header />
             <EnemyCard enemy={state.Board[state.currentSpot]}/>
             <PlayField board={state.Board} currentSpot={state.currentSpot}/>
             {

@@ -1,4 +1,8 @@
-.row {margin: 0 -5px;}
+.row {
+  margin: 0 -5px;
+  width: 100%;
+  overflow-x: scroll;
+}
 .column {
     float: left;
     width: 25%;
