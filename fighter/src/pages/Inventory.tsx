@@ -28,8 +28,8 @@ const Inventory = () => {
         accept: "item",
         drop: (item : {index : number, type : DnDType}) => {
             console.log(item.index);
-            if (item.type === DnDType.WEAPON) dispatch({type: ActionEnum.CHANGE_WEAPON, WEAPON_INDEX: item.index});
-            if (item.type === DnDType.ARMOR) dispatch({type: ActionEnum.CHANGE_ARMOR, ARMOR_INDEX: item.index});
+            if (item.type === DnDType.WEAPON) dispatch({type: ActionEnum.REMOVE_WEAPON, WEAPON_INDEX: item.index});
+            if (item.type === DnDType.ARMOR) dispatch({type: ActionEnum.REMOVE_ARMOR, ARMOR_INDEX: item.index});
 
         },
         collect: (monitor) => ({

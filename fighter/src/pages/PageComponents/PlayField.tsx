@@ -41,7 +41,13 @@ const Slot = ({enemy, showPlayer} : {enemy : Enemy, showPlayer : boolean }) => {
     return (
         <>
             <div className={`${Styles["slot"]} ${styleElement[enemy.element]}`}>
-               <p>{(showPlayer ? "some" : "")}</p> 
+               {
+                (showPlayer)
+                ?
+                <img className={Styles["player--full"]} src='/player.svg' alt="player"/>
+                :
+                <></>
+               }
             </div> 
         </>
     )
