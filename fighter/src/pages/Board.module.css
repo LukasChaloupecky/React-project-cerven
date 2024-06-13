@@ -3,3 +3,10 @@
     font-size: 3rem;
     color: white;
 }
+
+
+.content {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}

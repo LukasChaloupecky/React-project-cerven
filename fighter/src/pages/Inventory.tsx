@@ -39,19 +39,19 @@ const Inventory = () => {
     return (
         <div className={Styles["inventory__table"]}>
             <div className={Styles["inventory__row"]}>
-                <Card armor={state.selectedArmor.helmet} imgUrl={state.selectedArmor.helmet.ImgUrl} index={0}/>
+                <Card armor={state.selectedArmor.helmet} isDragable={true}  index={0}/>
                 <ArmorRow items={state.armorInventory.filter((armor) => armor.type === ArmorType.HELMET)}/>
             </div>
             <div className={Styles["inventory__row"]}>
-                <Card armor={state.selectedArmor.breastplate} imgUrl={state.selectedArmor.breastplate.ImgUrl} index={1}/>
+                <Card armor={state.selectedArmor.breastplate} isDragable={true} index={1}/>
                 <ArmorRow items={state.armorInventory.filter((armor) => armor.type === ArmorType.BREASTPLATE)}/>
             </div>
             <div className={Styles["inventory__row"]}>
-                <Card armor={state.selectedArmor.pants} imgUrl={state.selectedArmor.pants.ImgUrl} index={2}/>
+                <Card armor={state.selectedArmor.pants} isDragable={true} index={2}/>
                 <ArmorRow items={state.armorInventory.filter((armor) => armor.type === ArmorType.PANTS)}/>
             </div>
             <div className={Styles["inventory__row"]}>
-                <Card armor={state.selectedArmor.boots} imgUrl={state.selectedArmor.boots.ImgUrl} index={3}/>
+                <Card armor={state.selectedArmor.boots} isDragable={true} index={3}/>
                 <ArmorRow items={state.armorInventory.filter((armor) => armor.type === ArmorType.BOOTS)}/>
             </div>
             <div className={Styles["inventory__row"]}>

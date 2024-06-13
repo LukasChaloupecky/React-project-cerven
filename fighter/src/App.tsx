@@ -8,7 +8,7 @@ import Board from './pages/Board'
 import Inventory from './pages/Inventory';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import Header from './pages/PageComponents/Header';
+import Header from './pages/Header';
 
 function App() {
   const [state, dispatch] = (window.localStorage.getItem('gameState') !== null) ? useReducer(GameState, JSON.parse(window.localStorage.getItem('gameState') || '{}')) : useReducer(GameState, InitialGameState)

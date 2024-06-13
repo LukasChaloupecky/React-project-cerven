@@ -1,5 +1,12 @@
 .status {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    overflow: hidden;
+    display: inline-grid;
+    grid-template-columns: auto auto;
+}
+.status__element {
+    background-color: bisque;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
 }

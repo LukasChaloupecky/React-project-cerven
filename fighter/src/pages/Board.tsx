@@ -12,10 +12,13 @@ import Inventory from "./Inventory";
 import PlayField from "./PageComponents/PlayField";
 import EnemyCard from "./CardTypes/EnemyCard";
 import { useLocalStorage } from "../components/methods/useLocalStorage";
-import Header from "./PageComponents/Header";
+import Header from "./Header";
 import { url } from "inspector";
 
 import Styles from './Board.module.css';
+import ArmorCard from "./CardTypes/ArmorCard";
+import { PlayerInfo } from "./PageComponents/PlayerInfo";
+import Dice from "./PageComponents/Dice";
 
 
 // TODO : !!!!!! BIG decide how to correctly implement the handlers (possibly even useEffects) since the setState is async
@@ -90,6 +93,33 @@ const Board = () => {
         <>
            <h1 className={Styles["gameState"]}>{(state.isFight) ? "Is Fight" : "On Move"}</h1> 
            <PlayField board={state.Board} currentSpot={state.currentSpot}/>
+            <div className={Styles["content"]} >
+                <PlayerInfo state={state}/>
+                {
+                (state.isFight) 
+                ?
+                <div >
+                    <EnemyCard enemy={Enemy}/>
+                    <div>
+                        {
+                            PlayerTurn
+                            ?
+                            <div>
+                                <button onClick={() => HandleAttack(FightChoice.FastAttack)}>FastAttack</button>     
+                                <button onClick={() => HandleAttack(FightChoice.StrongAttack)}>StrongAttack</button>     
+                            </div>           
+                            :
+                            <button onClick={() => HandleDefense()}>Defense</button>
+                        }
+                    </div>
+                </div>
+                :
+                <div>
+                    
+                    <Dice/>
+                </div>
+                }
+           </div>
         </>
     );
 }
