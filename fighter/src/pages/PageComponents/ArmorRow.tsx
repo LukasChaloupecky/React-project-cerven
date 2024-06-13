@@ -13,7 +13,7 @@ const ArmorRow = ({items} : {items : Armor[] | Weapon[]}) => {
             if (item as Armor) {
             return (
                 <div className={Styles["column"]}>
-                    <ArmorCard armor={item as Armor} imgUrl={item.ImgUrl} index={index}/>
+                    <ArmorCard armor={item as Armor} isDragable={true} index={index}/>
                 </div>
             )}
             else if (item as Weapon) {

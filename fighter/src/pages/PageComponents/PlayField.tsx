@@ -12,6 +12,7 @@ const PlayField = ({board, currentSpot} : {board : Enemy[], currentSpot : number
     return (
         <>
             <div className={Styles["row"]}>
+                <div className={Styles["door"]}></div>
                 {
                     board.map((enemy, index) => {
                         return (
@@ -21,6 +22,7 @@ const PlayField = ({board, currentSpot} : {board : Enemy[], currentSpot : number
                         )
                     })
                 } 
+                <div className={Styles["door"]}></div>
             </div>
             {/* Add your component content here */}
         </>
@@ -44,7 +46,7 @@ const Slot = ({enemy, showPlayer} : {enemy : Enemy, showPlayer : boolean }) => {
                {
                 (showPlayer)
                 ?
-                <img className={Styles["player--full"]} src='/player.svg' alt="player"/>
+                <img className={Styles["player--full"]} src='/player.svg' alt="player"/> // TODO : this is only temporary -- because of animation use outside of this component
                 :
                 <></>
                }

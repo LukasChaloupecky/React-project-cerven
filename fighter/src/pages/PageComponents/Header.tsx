@@ -1,9 +1,9 @@
 import React from 'react';
-
+import Styles from './Header.module.css';
 const Header: React.FC = () => {
     return (
-        <div className="header">
-            <h1 className='header__title'>Fighter</h1>
+        <div className={Styles['header']}>
+            <h1 className={Styles['header__title']}>Fighter</h1>
         </div>    
     );
 };

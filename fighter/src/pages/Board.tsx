@@ -15,6 +15,8 @@ import { useLocalStorage } from "../components/methods/useLocalStorage";
 import Header from "./PageComponents/Header";
 import { url } from "inspector";
 
+import Styles from './Board.module.css';
+
 
 // TODO : !!!!!! BIG decide how to correctly implement the handlers (possibly even useEffects) since the setState is async
 const Board = () => { 
@@ -86,6 +88,16 @@ const Board = () => {
     
     return (
         <>
+           <h1 className={Styles["gameState"]}>{(state.isFight) ? "Is Fight" : "On Move"}</h1> 
+           <PlayField board={state.Board} currentSpot={state.currentSpot}/>
+        </>
+    );
+}
+
+export default Board;
+
+/* 
+<>
             {
             PlayerHP <= 0
             ?
@@ -97,7 +109,6 @@ const Board = () => {
             <>
             { // TODO : HERE WILL BE the SPOTS etc.
             }
-            < Header />
             <EnemyCard enemy={state.Board[state.currentSpot]}/>
             <PlayField board={state.Board} currentSpot={state.currentSpot}/>
             {
@@ -146,7 +157,4 @@ const Board = () => {
             </>
             }
         </>
-    );
-}
-
-export default Board;
+    */

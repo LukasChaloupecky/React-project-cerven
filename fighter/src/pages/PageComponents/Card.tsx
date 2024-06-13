@@ -12,7 +12,7 @@ export enum DnDType {
     WEAPON = "weapon"
 }
 
-const ArmorCard = ({armor, imgUrl, index} : {armor : Armor, imgUrl : string, index : number}) => {
+const ArmorCard = ({armor , index, isDragable} : {armor : Armor, index : number, isDragable : boolean}) => {
     const logo = "/armors/metal_helmet.jpeg"
     console.log(armor.ImgUrl) 
     // ! <img src={require("../../../public/armors/metal_helmet.jpeg")}/>
@@ -24,14 +24,8 @@ const ArmorCard = ({armor, imgUrl, index} : {armor : Armor, imgUrl : string, ind
         })
     });
     return (
-        <div ref={drag} className={Styles["card"]}>
+        <div ref={(isDragable)?drag:null} className={Styles["card"]}>
             <img className={Styles["card__image"]} src={armor.ImgUrl}/>
-            <div className={Styles["container"]}>
-                <h4>{armor.name}</h4>
-                <p>{armor.defense}</p>
-                <p>{armor.element}</p>
-                <p>{armor.cost}</p>
-            </div>
         </div>
     )
 }
