@@ -115,6 +115,8 @@ const Inventory = () => {
                         <ArmorRow items={state.weaponInventory}/>
                     </div>
                 </div> 
+                <div ref={dropSold} style={{backgroundColor: isOverSold ? "green" : "yellow", width: "100px", height: "100px"}}>sold</div>
+                <Link to={"/Board"}>Back</Link>
             </div>
         </> 
     )
