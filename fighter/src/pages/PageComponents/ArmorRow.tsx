@@ -1,11 +1,14 @@
 import { Armor } from "../../components/player/Armor";
-import ArmorCard from "./Card";
+import ArmorCard, { DnDType } from "./Card";
 import Styles from './ArmorRow.module.css'
 import WeaponCard from "./WeaponCard";
 import { Weapon } from "../../components/player/Weapon";
+import { useDrag } from "react-dnd";
+import DragableCard from "./Card";
 
 
 const ArmorRow = ({items} : {items : Armor[] | Weapon[]}) => {
+   
     return (
         <div className={Styles["row"]}>
         {
@@ -13,13 +16,13 @@ const ArmorRow = ({items} : {items : Armor[] | Weapon[]}) => {
             if (item as Armor) {
             return (
                 <div className={Styles["column"]}>
-                    <ArmorCard armor={item as Armor} isDragable={true} index={index}/>
+                    <DragableCard item={item as Armor} index={index}/>
                 </div>
             )}
             else if (item as Weapon) {
             return (
                 <div className={Styles["column"]}>
-                    <WeaponCard weapon={item as Weapon} imgUrl={item.ImgUrl} index={index}/>
+                    <DragableCard item={item as Weapon} index={index}/>
                 </div>
             )}
         })

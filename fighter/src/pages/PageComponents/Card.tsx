@@ -3,6 +3,8 @@ import { Armor } from '../../components/player/Armor';
 import Styles from './Card.module.css'
 import Image from './metal_helmet.jpeg'
 import { ArmorData } from '../../data/ArmorData';
+import ArmorCard from '../CardTypes/ArmorCard';
+import { Weapon } from '../../components/player/Weapon';
 
 
 
@@ -12,9 +14,8 @@ export enum DnDType {
     WEAPON = "weapon"
 }
 
-const ArmorCard = ({armor , index, isDragable} : {armor : Armor, index : number, isDragable : boolean}) => {
+const DragableCard = ({item, index} : {item : Armor | Weapon, index : number}) => {
     const logo = "/armors/metal_helmet.jpeg"
-    console.log(armor.ImgUrl) 
     // ! <img src={require("../../../public/armors/metal_helmet.jpeg")}/>
     const [{isDragging}, drag] = useDrag({
         type: "item",
@@ -24,9 +25,15 @@ const ArmorCard = ({armor , index, isDragable} : {armor : Armor, index : number,
         })
     });
     return (
-        <div ref={(isDragable)?drag:null} className={Styles["card"]}>
-            <img className={Styles["card__image"]} src={armor.ImgUrl}/>
+        <div ref={drag}>
+            {
+                (item as Weapon)
+                ?
+                <ArmorCard armor={item as Weapon}/>
+                :
+                <ArmorCard armor={item as Armor}/>
+            }
         </div>
     )
 }
-export default ArmorCard;
+export default DragableCard;

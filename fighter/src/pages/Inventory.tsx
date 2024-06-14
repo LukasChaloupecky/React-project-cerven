@@ -3,11 +3,12 @@ import { ActionEnum, GameContext } from "../components/player/GameState";
 import { Armor, ArmorType } from "../components/player/Armor";
 import Card, { DnDType } from "./PageComponents/Card";
 import { Link } from "react-router-dom";
-import { DndProvider, useDrop } from "react-dnd";
+import { DndProvider, useDrag, useDrop } from "react-dnd";
 
 import Styles from './Inventory.module.css'
 import WeaponCard from "./PageComponents/WeaponCard";
 import ArmorRow from "./PageComponents/ArmorRow";
+import ArmorCard from "./CardTypes/ArmorCard";
 
 
 const Inventory = () => {
@@ -36,22 +37,23 @@ const Inventory = () => {
             isOverSold: !!monitor.isOver()
         })
     });
+    
     return (
         <div className={Styles["inventory__table"]}>
             <div className={Styles["inventory__row"]}>
-                <Card armor={state.selectedArmor.helmet} isDragable={true}  index={0}/>
+                <ArmorCard armor={state.selectedArmor.helmet} />
                 <ArmorRow items={state.armorInventory.filter((armor) => armor.type === ArmorType.HELMET)}/>
             </div>
             <div className={Styles["inventory__row"]}>
-                <Card armor={state.selectedArmor.breastplate} isDragable={true} index={1}/>
+                <ArmorCard armor={state.selectedArmor.breastplate} />
                 <ArmorRow items={state.armorInventory.filter((armor) => armor.type === ArmorType.BREASTPLATE)}/>
             </div>
             <div className={Styles["inventory__row"]}>
-                <Card armor={state.selectedArmor.pants} isDragable={true} index={2}/>
+                <ArmorCard armor={state.selectedArmor.pants} />
                 <ArmorRow items={state.armorInventory.filter((armor) => armor.type === ArmorType.PANTS)}/>
             </div>
             <div className={Styles["inventory__row"]}>
-                <Card armor={state.selectedArmor.boots} isDragable={true} index={3}/>
+                <ArmorCard armor={state.selectedArmor.boots} />
                 <ArmorRow items={state.armorInventory.filter((armor) => armor.type === ArmorType.BOOTS)}/>
             </div>
             <div className={Styles["inventory__row"]}>
