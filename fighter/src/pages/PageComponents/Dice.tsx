@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Styles from './Dice.module.css'
+import { Link } from 'react-router-dom';
 
 const Dice: React.FC = () => {
+    const [Move, setMove] = useState(0);
+    const ImgSourcer = [
+        "/dice/1.png",
+        "/dice/2.png",
+        "/dice/3.png",
+        "/dice/4.png",
+        "/dice/5.png",
+        "/dice/6.png"
+    ];
+    const RollDice = () => {
+    }
     return (
-        <div>
-            {/* Your dice component content here */}
+        <div className={Styles["dice--container"]}>
+            <Link to={"/inventory"}>Inventory</Link>
+            <button onClick={() => RollDice()}>Roll</button>
+            <div className={Styles["dice--result"]}>
+                <img src={ImgSourcer[Move]}/> 
+            </div>
         </div>
     );
 };
