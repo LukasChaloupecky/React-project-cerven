@@ -89,7 +89,7 @@ const Board = () => {
         setEnemy(state.Board[state.currentSpot]);
 
     }
-    
+    console.log(state.selectedArmor.helmet); 
     return (
         <>
            <h1 className={Styles["gameState__state"]}>{(state.isFight) ? "Is Fight" : "On Move"}</h1> 

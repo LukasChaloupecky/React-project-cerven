@@ -1,13 +1,9 @@
 import { ElementEnum } from "./Element"
+import { Item } from "./Item"
 
-export type Weapon = {
+export type Weapon = Item & {
     id: WeaponEnum,
-    name: string,
     damage: number,
-    cost: number // ? For how much score can the item be sold
-    element: ElementEnum ,
-    level: number,
-    ImgUrl : string
 }
 
 export enum WeaponEnum {

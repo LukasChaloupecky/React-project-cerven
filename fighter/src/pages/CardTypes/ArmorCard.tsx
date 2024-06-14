@@ -16,7 +16,14 @@ const ArmorCard = ({armor} : {armor : Armor | Weapon}) => {
                 ?
                     <p>{(armor as Weapon).damage}</p> 
                 : 
-                    <p>{(armor as Armor).defense}</p>
+                    null 
+                }
+                {
+                (armor as Armor) 
+                ?
+                    <p>{(armor as Armor).defense}</p> 
+                : 
+                    null 
                 }
             </div>
         </div>

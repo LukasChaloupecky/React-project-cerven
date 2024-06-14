@@ -37,9 +37,8 @@ const Inventory = () => {
             isOverSold: !!monitor.isOver()
         })
     });
-    
-    return (
-        <div className={Styles["inventory__table"]}>
+    /*
+<div className={Styles["inventory__table"]}>
             <div className={Styles["inventory__row"]}>
                 <ArmorCard armor={state.selectedArmor.helmet} />
                 <ArmorRow items={state.armorInventory.filter((armor) => armor.type === ArmorType.HELMET)}/>
@@ -66,7 +65,58 @@ const Inventory = () => {
 
             <div ref={dropSold} style={{backgroundColor: isOverSold ? "green" : "yellow", width: "100px", height: "100px"}}>sold</div>
             < Link to={"/Board"}>Back</Link>
+
+
+            
         </div>
+    */
+
+    
+    return (
+        <>
+            <div className={Styles['inventory']}>
+                <div className={Styles['inventory__row']}>
+                    <div className={Styles['inventory__selected']}>
+                        <ArmorCard armor={state.selectedArmor.helmet} />
+                    </div>
+                    <div className={Styles['Inventory__unselected']}>
+                        <ArmorRow items={state.armorInventory.filter((armor) => armor.type === ArmorType.HELMET)}/>
+                    </div>
+                </div>
+                <div className={Styles['inventory__row']}>
+                    <div className={Styles['inventory__selected']}>
+                        <ArmorCard armor={state.selectedArmor.helmet} />
+                    </div>
+                    <div className={Styles['Inventory__unselected']}>
+                        <ArmorRow items={state.armorInventory.filter((armor) => armor.type === ArmorType.BREASTPLATE)}/>
+                    </div>
+                </div>
+                <div className={Styles['inventory__row']}>
+                    <div className={Styles['inventory__selected']}>
+                        <ArmorCard armor={state.selectedArmor.helmet} />
+                    </div>
+                    <div className={Styles['Inventory__unselected']}>
+                        <ArmorRow items={state.armorInventory.filter((armor) => armor.type === ArmorType.PANTS)}/>
+                    </div>
+                </div> 
+                <div className={Styles['inventory__row']}>
+                    <div className={Styles['inventory__selected']}>
+                        <ArmorCard armor={state.selectedArmor.helmet} />
+                    </div>
+                    <div className={Styles['Inventory__unselected']}>
+                        <ArmorRow items={state.armorInventory.filter((armor) => armor.type === ArmorType.BOOTS)}/>
+                    </div>
+                </div>  
+                <div className={Styles['inventory__row']}>
+                    <div className={Styles['inventory__selected']}>
+                        <ArmorCard armor={state.selectedWeapon} />
+                    </div>
+                    <div className={Styles['Inventory__unselected']}>
+                        <ArmorRow items={state.weaponInventory}/>
+                    </div>
+                </div> 
+            </div>
+        </> 
     )
 }
 export default Inventory;

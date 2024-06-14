@@ -1,5 +1,6 @@
 import { ElementEnum } from "./Element"
-
+import { Item } from "./Item"
+/*
 export type Armor = {
     id: ArmorEnum,
     name: string,
@@ -10,6 +11,13 @@ export type Armor = {
     level: number
     ImgUrl : string
 }
+*/
+export type Armor = Item & {
+    id: ArmorEnum,
+    type: ArmorType,
+    defense: number
+}
+
 export enum ArmorEnum {
     MetalHelmet,
     LeatherHelmet,
