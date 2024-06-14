@@ -3,7 +3,7 @@ import ArmorCard from '../CardTypes/ArmorCard'
 
 import Styles from './PlayerInfo.module.css'
 
-export const PlayerInfo= ({state} : {state : GameStateType}) => {
+export const PlayerInfo= ({state, PlayerHP} : {state : GameStateType, PlayerHP:number}) => {
     return (
         <div className={Styles["status"]}>
             <div className={Styles["status__element"]}>
@@ -15,8 +15,7 @@ export const PlayerInfo= ({state} : {state : GameStateType}) => {
             <div className={Styles["status__element"]}>
                 <div className={Styles["status--vertical"]}> 
                     <div className={Styles["status__element"]}>
-                        <p>Score: {state.score}</p>    
-                        <p>Level: {state.currentLevel}</p>    
+                        <p>{PlayerHP}</p>
                         <p>Weapon : {state.selectedWeapon.element.toString()} - {state.selectedWeapon.damage}</p>    
                     </div>
                     <div className={Styles["status__element"]}>

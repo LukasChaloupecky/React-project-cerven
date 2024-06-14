@@ -92,10 +92,19 @@ const Board = () => {
     console.log(state.selectedArmor.helmet); 
     return (
         <>
+        {
+            PlayerHP <= 0
+            ?
+            <>
+                <h1>Game Over</h1>
+                <button onClick={() => {HandleRestart()}}>Restart</button>
+            </>
+            :
+            <>
            <h1 className={Styles["gameState__state"]}>{(state.isFight) ? "Is Fight" : "On Move"}</h1> 
            <PlayField board={state.Board} currentSpot={state.currentSpot}/>
             <div className={Styles["content"]} >
-                <PlayerInfo state={state}/>
+                <PlayerInfo PlayerHP={PlayerHP} state={state}/>
                 {
                 (state.isFight) 
                 ?
@@ -116,12 +125,14 @@ const Board = () => {
                 </div>
                 :
                 <div>
-                    
+                    <button onClick={() => {setLocal(state)}}>Save Progress</button> 
                     <Dice setEnemy={setEnemy} setPlayerTurn={setPlayerTurn}/>
                 </div>
                 }
            </div>
-        </>
+           </>
+        }
+    </>
     );
 }
 
