@@ -16,10 +16,11 @@ const Inventory = () => {
     const dispatch = useContext(GameContext).dispatch;
     
     const [{isOver}, drop] = useDrop({
-        accept: DnDType.ARMOR,
-        drop: (item : {index : number}) => {
+        accept: "item",
+        drop: (item : {index : number, type : DnDType}) => {
             console.log(item.index);
-            dispatch({type: ActionEnum.CHANGE_ARMOR, ARMOR_INDEX: item.index});
+            if (item.type===DnDType.ARMOR) dispatch({type: ActionEnum.CHANGE_ARMOR, ARMOR_INDEX: item.index});
+            if (item.type===DnDType.WEAPON) dispatch({type: ActionEnum.CHANGE_WEAPON, WEAPON_INDEX: item.index});
         },
         collect: (monitor) => ({
             isOver: !!monitor.isOver()

@@ -14,22 +14,16 @@ const ArmorRow = ({items} : {items : Armor[] | Weapon[]}) => {
         {
         items.map((item, index) => {
             if (item as Armor) {
-            const [{isDragging}, drag] = useDrag({
-                type: DnDType.ARMOR,
-                item: {index : index},
-                collect: (monitor) => ({
-                    isDragging: !!monitor.isDragging()
-                })
-            });
+           
             return (
-                <div ref={drag} className={Styles["column"]}>
-                    <DragableCard item={item as Armor} index={index}/>
+                <div className={Styles["column"]}>
+                    <DragableCard type={DnDType.ARMOR} isDragable={true} item={item as Armor} index={index}/>
                 </div>
             )}
             else if (item as Weapon) {
             return (
                 <div className={Styles["column"]}>
-                    <DragableCard item={item as Weapon} index={index}/>
+                    <DragableCard type={DnDType.WEAPON} isDragable={true} item={item as Weapon} index={index}/>
                 </div>
             )}
         })

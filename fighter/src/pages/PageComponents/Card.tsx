@@ -14,18 +14,28 @@ export enum DnDType {
     WEAPON = "weapon"
 }
 
-const DragableCard = ({item, index} : {item : Armor | Weapon, index : number}) => {
+const DragableCard = ({item, index, isDragable, type} : {item : Armor | Weapon, index : number, isDragable : boolean, type : DnDType}) => {
     const logo = "/armors/metal_helmet.jpeg"
     // ! <img src={require("../../../public/armors/metal_helmet.jpeg")}/>
     const [{isDragging}, drag] = useDrag({
         type: "item",
-        item: {index :index, type: DnDType.ARMOR},
+        item: {index :index, type: type},
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging()
         })
     });
     return (
-        <div ref={drag}>
+        <>
+        {isDragable
+            ?
+            <div ref={drag} >
+            {
+            (item as Weapon)
+                ?
+                <ArmorCard armor={item as Weapon}/>
+                :
+                <ArmorCard armor={item as Armor}/>
+            }
             {
                 (item as Weapon)
                 ?
@@ -33,7 +43,26 @@ const DragableCard = ({item, index} : {item : Armor | Weapon, index : number}) =
                 :
                 <ArmorCard armor={item as Armor}/>
             }
-        </div>
+            </div>
+            :
+            <div >
+            {
+            (item as Weapon)
+                ?
+                <ArmorCard armor={item as Weapon}/>
+                :
+                <ArmorCard armor={item as Armor}/>
+            }
+            {
+                (item as Weapon)
+                ?
+                <ArmorCard armor={item as Weapon}/>
+                :
+                <ArmorCard armor={item as Armor}/>
+            }
+            </div>
+        }
+        </>
     )
 }
 export default DragableCard;
