@@ -7,11 +7,12 @@ export const WeaponData: Weapon[] = [
     {
         id: WeaponEnum.SWORD,
         name: "Sword",
-        damage: 10,
+        damage: 30,
         cost: 10,
         element: ElementEnum.NONE,
         level: 1,
-        ImgUrl: "images/weapon/sword.png"
+        ImgUrl: "/armors/vite.svg"
+
     },
     {
         id: WeaponEnum.AXE,
@@ -20,7 +21,7 @@ export const WeaponData: Weapon[] = [
         cost: 15,
         element: ElementEnum.NONE,
         level: 1,
-        ImgUrl: "images/weapon/sword.png"
+        ImgUrl: "/armors/vite.svg"
     },
     {
         id: WeaponEnum.BOW,

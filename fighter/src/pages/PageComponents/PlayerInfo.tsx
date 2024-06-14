@@ -19,7 +19,7 @@ export const PlayerInfo= ({state, PlayerHP} : {state : GameStateType, PlayerHP:n
                         <p>Weapon : {state.selectedWeapon.element.toString()} - {state.selectedWeapon.damage}</p>    
                     </div>
                     <div className={Styles["status__element"]}>
-                        <p>Healt</p>
+                        <ArmorCard armor={state.selectedWeapon}/>
                     </div>
                 </div>
             </div>

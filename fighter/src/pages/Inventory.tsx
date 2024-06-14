@@ -16,7 +16,7 @@ const Inventory = () => {
     const dispatch = useContext(GameContext).dispatch;
     
     const [{isOver}, drop] = useDrop({
-        accept: "armor",
+        accept: DnDType.ARMOR,
         drop: (item : {index : number}) => {
             console.log(item.index);
             dispatch({type: ActionEnum.CHANGE_ARMOR, ARMOR_INDEX: item.index});
@@ -76,15 +76,15 @@ const Inventory = () => {
         <>
             <div className={Styles['inventory']}>
                 <div className={Styles['inventory__row']}>
-                    <div className={Styles['inventory__selected']}>
+                    <div ref={drop} className={Styles['inventory__selected']}>
                         <ArmorCard armor={state.selectedArmor.helmet} />
                     </div>
                     <div className={Styles['Inventory__unselected']}>
                         <ArmorRow items={state.armorInventory.filter((armor) => armor.type === ArmorType.HELMET)}/>
                     </div>
                 </div>
-                <div className={Styles['inventory__row']}>
-                    <div className={Styles['inventory__selected']}>
+                <div  className={Styles['inventory__row']}>
+                    <div ref={drop} className={Styles['inventory__selected']}>
                         <ArmorCard armor={state.selectedArmor.helmet} />
                     </div>
                     <div className={Styles['Inventory__unselected']}>
@@ -92,7 +92,7 @@ const Inventory = () => {
                     </div>
                 </div>
                 <div className={Styles['inventory__row']}>
-                    <div className={Styles['inventory__selected']}>
+                    <div ref={drop} className={Styles['inventory__selected']}>
                         <ArmorCard armor={state.selectedArmor.helmet} />
                     </div>
                     <div className={Styles['Inventory__unselected']}>
@@ -100,7 +100,7 @@ const Inventory = () => {
                     </div>
                 </div> 
                 <div className={Styles['inventory__row']}>
-                    <div className={Styles['inventory__selected']}>
+                    <div ref={drop} className={Styles['inventory__selected']}>
                         <ArmorCard armor={state.selectedArmor.helmet} />
                     </div>
                     <div className={Styles['Inventory__unselected']}>

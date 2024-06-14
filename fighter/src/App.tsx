@@ -19,7 +19,7 @@ function App() {
             <Route path="/Inventory" element={<Inventory />} />
             <Route path="/Board" element={<Board />} />
         </>
-    ), {basename: "/Chalupa"}
+    ), {basename: "/web"}
   );
   return (
     <>
