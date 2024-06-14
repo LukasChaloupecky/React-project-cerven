@@ -11,7 +11,8 @@ export const Rules = {
     matchingElementMultiplier: 2,
     elementProtectionMultiplier: 0.1,
     maxHP : 100,
-    maxMove : 3
+    maxMove : 3,
+    throwLimit: 3
 }
 
 type ArmorState = {

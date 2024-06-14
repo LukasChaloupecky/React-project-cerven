@@ -73,6 +73,7 @@ const Board = () => {
          setPlayerHP(PlayerHP - DefenseHandler({enemy: Enemy, gamestate: state}));
          setPlayerTurn(true);
     }
+    /*
     const HandleMove = () => {
         const move = Math.floor(Math.random() * Rules.maxMove*2);
          dispatch({type: ActionEnum.CHANGE_SPOT, SPOT_DIFFERENCE: move});
@@ -82,6 +83,7 @@ const Board = () => {
          dispatch({type: ActionEnum.IS_FIGHT, IS_FIGHT: true});
          setPlayerTurn(true);
     }
+    */
     const HandleRestart = () => {
         setPlayerHP(Rules.maxHP);
         setEnemy(state.Board[state.currentSpot]);
@@ -115,7 +117,7 @@ const Board = () => {
                 :
                 <div>
                     
-                    <Dice/>
+                    <Dice setEnemy={setEnemy} setPlayerTurn={setPlayerTurn}/>
                 </div>
                 }
            </div>
