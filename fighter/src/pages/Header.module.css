@@ -7,7 +7,7 @@
 }
 
 .header__title {
-    font-size: 6rem;
+    font-size: 2em;
     font-weight: 400;
     font-family: "Jacques Francois Shadow", serif;
     color: #fff;
@@ -17,7 +17,7 @@
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 .header {
-    padding: 1.5rem;
+    padding: .5em;
     background-image: url(/background/bgstrong.jpg);
     backdrop-filter: blur(10px);
     text-align: center;

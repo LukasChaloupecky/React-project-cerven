@@ -5,7 +5,6 @@ import { ArmorData } from "../data/ArmorData";
 import { Armor } from "../components/player/Armor";
 import { Weapon } from "../components/player/Weapon";
 import { WeaponData } from "../data/WeaponData";
-import SelectedItems from "./PageComponents/SelectedItems";
 
 import {RouterProvider, createRoutesFromElements, Route, createBrowserRouter, Link} from "react-router-dom";
 import Inventory from "./Inventory";
@@ -91,7 +90,7 @@ const Board = () => {
     
     return (
         <>
-           <h1 className={Styles["gameState"]}>{(state.isFight) ? "Is Fight" : "On Move"}</h1> 
+           <h1 className={Styles["gameState__state"]}>{(state.isFight) ? "Is Fight" : "On Move"}</h1> 
            <PlayField board={state.Board} currentSpot={state.currentSpot}/>
             <div className={Styles["content"]} >
                 <PlayerInfo state={state}/>

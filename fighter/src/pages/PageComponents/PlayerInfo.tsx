@@ -13,8 +13,16 @@ export const PlayerInfo= ({state} : {state : GameStateType}) => {
                 <ArmorCard armor={state.selectedArmor.boots}/>
             </div>
             <div className={Styles["status__element"]}>
-                <ArmorCard armor={state.selectedArmor.boots}/>
-                <p>fsafdasf </p>
+                <div className={Styles["status--vertical"]}> 
+                    <div className={Styles["status__element"]}>
+                        <p>Score: {state.score}</p>    
+                        <p>Level: {state.currentLevel}</p>    
+                        <p>Weapon : {state.selectedWeapon.element.toString()} - {state.selectedWeapon.damage}</p>    
+                    </div>
+                    <div className={Styles["status__element"]}>
+                        <p>Healt</p>
+                    </div>
+                </div>
             </div>
         </div>
     )

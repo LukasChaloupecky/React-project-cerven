@@ -1,5 +1,4 @@
 .status {
-    overflow: hidden;
     display: inline-grid;
     grid-template-columns: auto auto;
 }
@@ -9,4 +8,10 @@
     display: flex;
     flex-direction: column;
     border: 1px solid black;
+}
+
+.status--vertical {
+    display: grid;
+    grid-template-rows: 3fr 1fr;
+    height: 100%;
 }

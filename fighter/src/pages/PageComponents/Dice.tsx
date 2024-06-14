@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Styles from './Dice.module.css'
 import { Link } from 'react-router-dom';
+import { Rules } from '../../components/player/GameState';
 
 const Dice: React.FC = () => {
     const [Move, setMove] = useState(0);
@@ -13,6 +14,8 @@ const Dice: React.FC = () => {
         "/dice/6.png"
     ];
     const RollDice = () => {
+        const randomNumber = Math.floor(Math.random() * Rules.maxMove) + 1;
+        setMove(randomNumber);
     }
     return (
         <div className={Styles["dice--container"]}>
